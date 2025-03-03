@@ -6,6 +6,7 @@ pkgs.mkShell ({
         cmake 
         gtest
         gdb
+        clang-tools
     ];
 
     IS_NIX_SHELL = 1;
