@@ -9,6 +9,7 @@
 
 #include "common.h"
 #include "converters.h"
+#include "eval.h"
 
 int main(int argc, char** argv) {
     argparse::ArgumentParser program("hxr");
