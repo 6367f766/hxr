@@ -1,0 +1,165 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "debug",
+            "binaryDir": "${sourceDir}/build_outputs/debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_CXX_FLAGS_DEBUG": "-O1 -g",
+                "DEV_HARDWARE": {"type": "bool", "value": "ON"},
+                "CMAKE_COMPILE_WARNING_AS_ERROR": "OFF"
+            }
+        },
+        {
+            "name": "release",
+            "binaryDir": "${sourceDir}/build_outputs/release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "cross",
+            "binaryDir": "${sourceDir}/build_outputs/cross-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "toolchainFile": "${sourceDir}/cmake/arm_a53_alex.cmake"
+        },
+        {
+            "name": "cross-tmu",
+            "binaryDir": "${sourceDir}/build_outputs/cross-debug-tmu",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "toolchainFile": "${sourceDir}/cmake/arm_a53.cmake"
+        },
+        {
+            "name": "cross-rel",
+            "binaryDir": "${sourceDir}/build_outputs/cross-release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "toolchainFile": "${sourceDir}/cmake/arm_a53_alex.cmake"
+        }
+
+    ],
+    "buildPresets": [
+        {
+            "name": "debug",
+            "configurePreset": "debug",
+            "jobs": 19,
+            "targets": [
+                "all"
+            ]
+        },
+        {
+            "name": "release",
+            "configurePreset": "release",
+            "jobs": 19
+        },
+        {
+            "name": "cross",
+            "configurePreset": "cross",
+            "jobs": 19,
+            "targets": [
+                "all"
+            ]
+        },
+        {
+            "name": "cross-tmu",
+            "configurePreset": "cross-tmu",
+            "jobs": 19,
+            "targets": [
+                "all"
+            ]
+        },
+        {
+            "name": "cross-rel",
+            "configurePreset": "cross-rel",
+            "jobs": 19,
+            "targets": [
+                "all"
+            ]
+        }
+
+    ],
+    "testPresets": [
+        {
+            "name": "release",
+            "configurePreset": "release"
+        }
+    ],
+    "workflowPresets": [
+        {
+            "name": "debug",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "debug"
+                },
+                {
+                    "type": "build",
+                    "name": "debug"
+                }
+            ]
+        },
+        {
+            "name": "release",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "release"
+                },
+                {
+                    "type": "build",
+                    "name": "release"
+                },
+                {
+                    "type": "test",
+                    "name": "release"
+                }
+            ]
+        },
+        {
+            "name": "cross-debug",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "cross"
+                },
+                {
+                    "type": "build",
+                    "name": "cross"
+                }
+            ]
+        },
+        {
+            "name": "cross-release",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "cross-rel"
+                },
+                {
+                    "type": "build",
+                    "name": "cross-rel"
+                }
+            ]
+        },
+        {
+            "name": "cross-tmu",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "cross-tmu"
+                },
+                {
+                    "type": "build",
+                    "name": "cross-tmu"
+                }
+            ]
+        }
+
+    ]
+}
