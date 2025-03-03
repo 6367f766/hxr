@@ -39,3 +39,9 @@ build/
 GPATH
 GRTAGS
 GTAGS
+
+# random stuff 
+.gadgets.json
+.vimspector.json
+compile_commands.json
+result
