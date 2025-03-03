@@ -34,3 +34,8 @@
 # build folders
 build_outputs/
 build/
+
+# gtags
+GPATH
+GRTAGS
+GTAGS
