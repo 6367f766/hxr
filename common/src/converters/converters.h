@@ -11,18 +11,24 @@ struct Metadata {
     void setShowBinary(bool value) { showBinary = value; }
     void setIsString(bool value) { isString_ = value; }
     void setIsHex(bool value) { isHex_ = value; }
+    void setIs64Bit(bool value) { is64bit_ = value; }
+    void setIsSigned(bool value) { isSigned_ = value; }
 
     bool getShowAddress() { return showAddress; }
     bool getShowBinary() { return showBinary; }
 
     bool isString() { return isString_; }
     bool isHex() { return isHex_; }
+    bool is64Bit() { return is64bit_; }
+    bool isSinged() { return isSigned_; }
 
    private:
     bool showAddress{false};
     bool showBinary{false};
     bool isString_{false};
     bool isHex_{false};
+    bool is64bit_{false};
+    bool isSigned_{false};
 };
 
 template <class T, class Config = Metadata>

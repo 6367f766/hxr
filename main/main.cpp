@@ -8,6 +8,7 @@
 #include "common.h"
 #include "converters.h"
 #include "eval.h"
+#include "type_list.h"
 
 int main(int argc, char** argv) {
     argparse::ArgumentParser program("hxr");
@@ -48,8 +49,10 @@ int main(int argc, char** argv) {
         auto isHex = query_command.is_used("x");
 
         if (isText) {
-            auto text = query_command.get<std::string>("t");
-            converters::Hexer<std::string> hxr{text};
+            constexpr char* argument = "t";
+            using T = EnumToType_t<MapGet(argument)>;
+            auto text = query_command.get<T>(argument);
+            converters::Hexer<T> hxr{text};
             hxr.setShowBinary(showBin);
             hxr.setIsString(true);
             hxr.run();
@@ -59,7 +62,7 @@ int main(int argc, char** argv) {
         if (isHex) {
             if (is64Bit) {
                 auto number = query_command.get<uint64_t>("x");
-                converters::Hexer<uint64_t> hxr{number};
+                converters::Hexer<decltype(number)> hxr{number};
                 hxr.setIsHex(isHex);
                 hxr.setShowBinary(showBin);
                 hxr.run();
@@ -75,6 +78,13 @@ int main(int argc, char** argv) {
         }
 
         if (isSigned) {
+            // signed
+            auto number = query_command.get<int64_t>("d");
+            converters::Hexer<decltype(number)> hxr{number};
+            hxr.setIs64Bit(is64Bit);
+            hxr.setShowBinary(showBin);
+            hxr.run();
+
             if (is64Bit) {
                 int64_t number =
                     static_cast<int64_t>(query_command.get<int64_t>("d"));

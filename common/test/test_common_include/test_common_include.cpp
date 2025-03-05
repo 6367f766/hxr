@@ -2,6 +2,7 @@
 
 #include "common.h"
 #include "eval.h"
+#include "type_list.h"
 
 TEST(TestOne, test) { 
     ASSERT_TRUE(true); 
@@ -16,3 +17,7 @@ TEST(TestEval, init) {
     op.compute();
 }
 
+TEST(TestTypeList, init) {
+    EnumToType_t<MapGet("u")> hello = 10;
+    std::cout << hello << std::endl;
+}
