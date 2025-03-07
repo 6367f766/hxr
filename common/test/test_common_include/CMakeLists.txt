@@ -10,6 +10,7 @@ target_link_libraries(${PROJECT_NAME}
     libgmock
     common_include
     converters
+    logger
 )
 
 add_test(

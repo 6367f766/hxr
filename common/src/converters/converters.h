@@ -28,62 +28,63 @@ struct Metadata {
 template <class T, class Config = Metadata>
 class Hexer : public Config {
     T& valueRef_;
+    std::ostringstream ss_;
 
     void toHex() {
         uint8_t* startAddr = reinterpret_cast<uint8_t*>(&valueRef_);
-        std::cout << "   ";
+        ss_ << "   ";
 
         uint8_t tabCounter = 0;
         for (uint8_t i = 0; i < sizeof(T); i++) {
-            std::cout << std::setfill('0') << std::setw(2) << std::hex
-                      << unsigned(*startAddr) << "\t\t   ";
+            ss_ << std::setfill('0') << std::setw(2) << std::hex
+               << unsigned(*startAddr) << "\t\t   ";
             startAddr++;
             tabCounter++;
             if (tabCounter == 10) {
-                std::cout << std::endl;
+                ss_ << std::endl;
                 tabCounter = 0;
             }
         }
-        std::cout << std::endl;
+
+        ss_ << std::endl;
     }
 
     void toBin() {
         uint8_t* startAddr = reinterpret_cast<uint8_t*>(&valueRef_);
-
         uint8_t tabCounter = 0;
         for (uint8_t i = 0; i < sizeof(T); i++) {
             std::bitset<4> firstByte{unsigned((*startAddr >> 4) & 0xff)};
-            std::cout << firstByte << " ";
+            ss_ << firstByte << " ";
             std::bitset<4> lastByte{unsigned(*startAddr & 0xff)};
-            std::cout << lastByte;
+            ss_ << lastByte;
             //  std::cout << " " << (byte & ~0xFF);
-            std::cout << "\t";
+            ss_ << "\t";
             startAddr++;
             tabCounter++;
             if (tabCounter == 10) {
-                std::cout << std::endl;
+                ss_ << std::endl;
                 tabCounter = 0;
             }
         }
-        std::cout << std::endl;
+        ss_ << std::endl;
     }
 
     void trackCounter(uint8_t& ref, std::ostringstream& lineRef,
                       bool isLast = false) {
-        //
         if (ref == 8) {
-            std::cout << lineRef.str();
-            std::cout << std::endl;
+            ss_ << lineRef.str();
+            ss_ << std::endl;
             lineRef.str("");
 
             if (isLast) {
                 ref = 0;
-                std::cout << std::endl;
+                ss_ << std::endl;
             }
         }
     }
 
     void showString(char* data, uint32_t maxSize) {
+        LOG_V() << "Showing string...";
         uint8_t* startAddr = reinterpret_cast<uint8_t*>(data);
         uint8_t counter = 0;
 
@@ -107,37 +108,40 @@ class Hexer : public Config {
             trackCounter(counter, line2);
             trackCounter(counter, line3, true);
         }
-        std::cout << line1.str();
-        std::cout << std::endl;
-        std::cout << line2.str();
-        std::cout << std::endl;
-        std::cout << line3.str();
-        std::cout << std::endl;
+        ss_ << line1.str() << "\n";
+        ss_ << line2.str() << "\n";
+        ss_ << line3.str() << "\n";
     }
 
    public:
     Hexer(T& value) : valueRef_(value){};
 
     void run() {
+        LOG_V() << "Running main...";
         if (Config::isHex()) {
-            std::cout << valueRef_ << std::endl;
+            LOG_V() << "Value is hex";
+            ss_ << valueRef_ << std::endl;
             if (Config::getShowBinary()) {
+                LOG_V() << "Show binary on...";
                 toBin();
             }
             return;
         }
 
         if constexpr (std::is_same_v<T, std::string>) {
+            LOG_V() << "Value is text";
+
             SizedText<100> sizedText{valueRef_.c_str()};
             showString(const_cast<char*>(sizedText.c_str()),
                        sizedText.getSize());
         } else {
             toHex();
             if (Config::getShowBinary()) {
+                LOG_V() << "Show binary on...";
                 toBin();
             }
         }
-
+        LOG_B() << ss_.str();
     }
 };
 

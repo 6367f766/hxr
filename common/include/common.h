@@ -1,5 +1,7 @@
 #include <stdint.h>
 
+#include "logger.h"
+
 inline uint32_t add_two_uints(uint32_t a, uint32_t b) { return a + b; }
 
 template <uint32_t Size>
@@ -35,10 +37,12 @@ struct SizedText {
     const char* c_str() const { return text_.data(); }
 
     void print() const {
+        std::ostringstream ss;
         for (uint32_t i = 0; i < actualSize; i++) {
-            std::cout << text_.at(i);
+            ss << text_.at(i);
         }
-        std::cout << std::endl;
+        ss << std::endl;
+        LOG_I() << ss.str();
     }
 
     uint32_t getSize() { return actualSize; }
