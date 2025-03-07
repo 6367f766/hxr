@@ -2,6 +2,7 @@
 
 #include "common.h"
 #include "eval.h"
+#include "logger.h"
 
 TEST(TestOne, test) { 
     ASSERT_TRUE(true); 
@@ -16,3 +17,12 @@ TEST(TestEval, init) {
     op.compute();
 }
 
+TEST(TestLogger, init) {
+    common::Logger& logger = common::Logger::getLogger();
+    logger.log(common::Severity::VERBOSE)
+        << "More stuff here" << " and here: " << 5;
+
+    logger.log(common::Severity::VERBOSE)
+        << "Another one " << " and here: " << 5;
+    //
+}

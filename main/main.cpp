@@ -8,9 +8,13 @@
 #include "common.h"
 #include "converters.h"
 #include "eval.h"
+#include "logger.h"
 
 int main(int argc, char** argv) {
     argparse::ArgumentParser program("hxr");
+    program.add_argument("--log-level")
+        .help("Log level [V]erbose, D[ebug], I[nfo], W[arning]")
+        .default_value("I");
     argparse::ArgumentParser query_command("query");
     argparse::ArgumentParser evaluate_command("evaluate");
 
@@ -39,6 +43,11 @@ int main(int argc, char** argv) {
         std::cerr << program;
         return 1;
     }
+
+    // get and set log-level
+    common::Logger::getLogger().setSeverity(
+        program.get<std::string>("--log-level"));
+
 
     if (program.is_subcommand_used("query")) {
         auto showBin = query_command.get<bool>("b");
@@ -76,12 +85,14 @@ int main(int argc, char** argv) {
 
         if (isSigned) {
             if (is64Bit) {
+                LOG_V() << "Is signed 64";
                 int64_t number =
                     static_cast<int64_t>(query_command.get<int64_t>("d"));
                 converters::Hexer<int64_t> hxr{number};
                 hxr.setShowBinary(showBin);
                 hxr.run();
             } else {
+                LOG_V() << "Is signed 32";
                 int32_t number =
                     static_cast<int32_t>(query_command.get<int64_t>("d"));
                 converters::Hexer<int32_t> hxr{number};
@@ -90,11 +101,13 @@ int main(int argc, char** argv) {
             }
         } else {
             if (is64Bit) {
+                LOG_V() << "Is unsigned 64";
                 auto number = query_command.get<uint64_t>("u");
                 converters::Hexer<uint64_t> hxr{number};
                 hxr.setShowBinary(showBin);
                 hxr.run();
             } else {
+                LOG_V() << "Is unsigned 32";
                 uint32_t number =
                     static_cast<uint32_t>(query_command.get<uint64_t>("u"));
                 converters::Hexer<uint32_t> hxr{number};
