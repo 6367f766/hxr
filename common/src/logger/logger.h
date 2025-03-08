@@ -96,6 +96,19 @@ class Logger {
 #define LOG_D() common::Logger::getLogger().log(common::Severity::DEBUG)
 #define LOG_I() common::Logger::getLogger().log(common::Severity::INFO)
 #define LOG_W() common::Logger::getLogger().log(common::Severity::WARNING)
+
+class ScopedLog {
+    std::string_view fname_{};
+
+   public:
+    ScopedLog(std::string_view fname) : fname_{fname} {
+        LOG_V() << "Enter: " << fname_;
+    }
+    ~ScopedLog() { LOG_V() << "Exit: " << fname_; }
+};
+
+#define LOG_ENTRYPOINT \
+    common::ScopedLog { __FUNCTION__ }
 };  // namespace common
 
 #endif
