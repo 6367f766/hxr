@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 
+#include "bin_file_read.h"
 #include "common.h"
 #include "converters.h"
 #include "eval.h"
@@ -32,6 +33,7 @@ int main(int argc, char** argv) {
     evaluate_group.add_argument("--eval")
         .help("Evaluate an expression. Currently only hex is allowed")
         .flag();
+    evaluate_command.add_argument("--file"); 
 
     program.add_subparser(query_command);
     program.add_subparser(evaluate_command);
@@ -118,13 +120,22 @@ int main(int argc, char** argv) {
         return 0;
     } else {
         // evaluate
-        /// XXX: move this to subcommand... Likely the rest too
-        std::cout << "<expression>: ";
-        std::string input;
-        std::getline(std::cin, input);
-        std::cout << "input was: " << input << std::endl;
-        Eval evaluation{input};
-        return 0;
+
+        if (evaluate_command.is_used("--file")) {
+            auto filename = evaluate_command.get<std::string>("file");
+            LOG_D() << "file present: " << filename;
+            BinFileRead bfr{filename};
+            bfr.run<uint32_t>();
+
+        } else {
+            /// XXX: move this to subcommand... Likely the rest too
+            std::cout << "<expression>: ";
+            std::string input;
+            std::getline(std::cin, input);
+            std::cout << "input was: " << input << std::endl;
+            Eval evaluation{input};
+            return 0;
+        }
     }
 
     // std::ifstream maps("/proc/self/maps");
