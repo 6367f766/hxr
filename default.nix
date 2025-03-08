@@ -7,6 +7,8 @@ pkgs.mkShell ({
         gtest
         gdb
         clang-tools
+        doxygen
+        graphviz
     ];
 
     IS_NIX_SHELL = 1;

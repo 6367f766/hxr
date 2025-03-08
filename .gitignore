@@ -45,3 +45,6 @@ GTAGS
 .vimspector.json
 compile_commands.json
 result
+
+# doxygen
+doc_out
