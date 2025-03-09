@@ -73,66 +73,87 @@ int main(int argc, char** argv) {
         auto isText = query_command.is_used("t");
         auto isHex = query_command.is_used("x");
 
+        auto metadata = converters::ArgumentMetadata{0}
+                            .withShowBinary(showBin)
+                            .withIsSigned(isSigned)
+                            .withIsString(isText)
+                            .withIsHex(isHex);
+
         if (isText) {
             auto text = query_command.get<std::string>("t");
             converters::Hexer<std::string> hxr{text};
-            hxr.setShowBinary(showBin);
-            hxr.setIsString(true);
+            hxr.setConfig(metadata);
             hxr.run();
             return 0;
         }
 
-        if (isHex) {
-            if (is64Bit) {
-                FOO(query_command, uint64_t, "x");
-                // auto number = query_command.get<uint64_t>("x");
-                // converters::Hexer<uint64_t> hxr{number};
-                // hxr.setIsHex(isHex);
-                // hxr.setShowBinary(showBin);
-                // hxr.run();
-            } else {
-                uint32_t number =
-                    static_cast<uint32_t>(query_command.get<uint64_t>("x"));
-                converters::Hexer<uint32_t> hxr{number};
-                hxr.setIsHex(isHex);
-                hxr.setShowBinary(showBin);
-                hxr.run();
-            }
-            return 0;
+        if (isSigned) {
+            metadata.withSize(2);
+            auto number = query_command.get<int64_t>("d");
+            converters::Hexer<int64_t> hxr{number};
+            hxr.setConfig(metadata);
+            hxr.run();
+        } else {
+            // unsigned
+            // XXX: determine size based on new config (--bytes)
+            metadata.withSize(2);
+            auto number = query_command.get<uint64_t>("u");
+            converters::Hexer<uint64_t> hxr{number};
+            hxr.setConfig(metadata);
+            hxr.run();
         }
 
-        if (isSigned) {
-            if (is64Bit) {
-                LOG_V() << "Is signed 64";
-                int64_t number =
-                    static_cast<int64_t>(query_command.get<int64_t>("d"));
-                converters::Hexer<int64_t> hxr{number};
-                hxr.setShowBinary(showBin);
-                hxr.run();
-            } else {
-                LOG_V() << "Is signed 32";
-                int32_t number =
-                    static_cast<int32_t>(query_command.get<int64_t>("d"));
-                converters::Hexer<int32_t> hxr{number};
-                hxr.setShowBinary(showBin);
-                hxr.run();
-            }
-        } else {
-            if (is64Bit) {
-                LOG_V() << "Is unsigned 64";
-                auto number = query_command.get<uint64_t>("u");
-                converters::Hexer<uint64_t> hxr{number};
-                hxr.setShowBinary(showBin);
-                hxr.run();
-            } else {
-                LOG_V() << "Is unsigned 32";
-                uint32_t number =
-                    static_cast<uint32_t>(query_command.get<uint64_t>("u"));
-                converters::Hexer<uint32_t> hxr{number};
-                hxr.setShowBinary(showBin);
-                hxr.run();
-            }
-        }
+        // if (isHex) {
+        // if (is64Bit) {
+        //     FOO(query_command, uint64_t, "x");
+        //     // auto number = query_command.get<uint64_t>("x");
+        //     // converters::Hexer<uint64_t> hxr{number};
+        //     // hxr.setIsHex(isHex);
+        //     // hxr.setShowBinary(showBin);
+        //     // hxr.run();
+        //     } else {
+        //         uint32_t number =
+        //             static_cast<uint32_t>(query_command.get<uint64_t>("x"));
+        //         converters::Hexer<uint32_t> hxr{number};
+        //         hxr.setIsHex(isHex);
+        //         hxr.setShowBinary(showBin);
+        //         hxr.run();
+        //     }
+        //     return 0;
+        // }
+
+        // if (isSigned) {
+        //     if (is64Bit) {
+        //         LOG_V() << "Is signed 64";
+        //         int64_t number =
+        //             static_cast<int64_t>(query_command.get<int64_t>("d"));
+        //         converters::Hexer<int64_t> hxr{number};
+        //         hxr.setShowBinary(showBin);
+        //         hxr.run();
+        //     } else {
+        //         LOG_V() << "Is signed 32";
+        //         int32_t number =
+        //             static_cast<int32_t>(query_command.get<int64_t>("d"));
+        //         converters::Hexer<int32_t> hxr{number};
+        //         hxr.setShowBinary(showBin);
+        //         hxr.run();
+        //     }
+        // } else {
+        //     if (is64Bit) {
+        //         LOG_V() << "Is unsigned 64";
+        //         auto number = query_command.get<uint64_t>("u");
+        //         converters::Hexer<uint64_t> hxr{number};
+        //         hxr.setShowBinary(showBin);
+        //         hxr.run();
+        //     } else {
+        //         LOG_V() << "Is unsigned 32";
+        //         uint32_t number =
+        //             static_cast<uint32_t>(query_command.get<uint64_t>("u"));
+        //         converters::Hexer<uint32_t> hxr{number};
+        //         hxr.setShowBinary(showBin);
+        //         hxr.run();
+        //     }
+        // }
         return 0;
     } else {
         // evaluate

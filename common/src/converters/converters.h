@@ -48,6 +48,8 @@ struct ArgumentMetadata {
         return *this;
     }
 
+    void setConfig(ArgumentMetadata newArg) { *this = newArg; }
+
     bool isString{false};
     bool isHex{false};
     bool showBinary{false};
@@ -55,26 +57,7 @@ struct ArgumentMetadata {
     size_t size;
 };
 
-struct Metadata {
-    void setShowAddress(bool value) { showAddress = value; }
-    void setShowBinary(bool value) { showBinary = value; }
-    void setIsString(bool value) { isString_ = value; }
-    void setIsHex(bool value) { isHex_ = value; }
-
-    bool getShowAddress() { return showAddress; }
-    bool getShowBinary() { return showBinary; }
-
-    bool isString() { return isString_; }
-    bool isHex() { return isHex_; }
-
-   private:
-    bool showAddress{false};
-    bool showBinary{false};
-    bool isString_{false};
-    bool isHex_{false};
-};
-
-template <class T, class Config = Metadata>
+template <class T, class Config = ArgumentMetadata>
 class Hexer : public Config {
     T& valueRef_;
     std::ostringstream ss_;
@@ -84,7 +67,7 @@ class Hexer : public Config {
         ss_ << "   ";
 
         uint8_t tabCounter = 0;
-        for (uint8_t i = 0; i < sizeof(T); i++) {
+        for (uint8_t i = 0; i < Config::size; i++) {
             ss_ << std::setfill('0') << std::setw(2) << std::hex
                 << unsigned(*startAddr) << "\t\t   ";
             startAddr++;
@@ -101,7 +84,7 @@ class Hexer : public Config {
     void toBin() {
         uint8_t* startAddr = reinterpret_cast<uint8_t*>(&valueRef_);
         uint8_t tabCounter = 0;
-        for (uint8_t i = 0; i < sizeof(T); i++) {
+        for (uint8_t i = 0; i < Config::size; i++) {
             std::bitset<4> firstByte{unsigned((*startAddr >> 4) & 0xff)};
             ss_ << firstByte << " ";
             std::bitset<4> lastByte{unsigned(*startAddr & 0xff)};
@@ -163,14 +146,18 @@ class Hexer : public Config {
     }
 
    public:
-    Hexer(T& value) : valueRef_(value) {};
+    Hexer(T& value) : valueRef_(value), Config{0} {};
+
+    void setConfig(Config config) {
+        Config::setConfig(config);
+    }
 
     void run() {
         LOG_V() << "Running main...";
-        if (Config::isHex()) {
+        if (Config::isHex) {
             LOG_V() << "Value is hex";
             ss_ << valueRef_ << std::endl;
-            if (Config::getShowBinary()) {
+            if (Config::showBinary) {
                 LOG_V() << "Show binary on...";
                 toBin();
             }
@@ -185,7 +172,7 @@ class Hexer : public Config {
                        sizedText.getSize());
         } else {
             toHex();
-            if (Config::getShowBinary()) {
+            if (Config::showBinary) {
                 LOG_V() << "Show binary on...";
                 toBin();
             }
