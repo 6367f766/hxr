@@ -161,6 +161,7 @@ class Hexer : public Config {
                 LOG_V() << "Show binary on...";
                 toBin();
             }
+            LOG_B() << ss_.str();
             return;
         }
 
