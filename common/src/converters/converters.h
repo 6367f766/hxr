@@ -1,34 +1,61 @@
 #ifndef CONVERTERS_H
 #define CONVERTERS_H
+#include <bitset>
 #include <cstdint>
+#include <iomanip>
 #include <sstream>
 
 namespace converters {
 
-/**
- * @class Metadata
- * @brief
- *
- * I think 64/32 bit should be changed to be numbits!
- *
- * Bit options:
- *  8
- *  16
- *  32
- *  64
- *
- */
-struct Metadata {
-    Metadata(size_t s) : size{s} {}
+/// @class ArgumentMetadata
+/// @brief Contains information on arguments
+/// `size` will contain the following bit options: TODO: maybe make this an
+/// enum
+///
+///  8
+///  16
+///  32
+///  64
+///
+// This is a do it all, no real sense struct... I've sort of put all this
+// together... in one place but there are no railings here...
+// do be careful here be dragons.
+struct ArgumentMetadata {
+    ArgumentMetadata(size_t s) : size{s} {}
+
+    ArgumentMetadata& withSize(size_t newSize) {
+        size = newSize;
+        return *this;
+    }
+
+    ArgumentMetadata& withShowBinary(bool value) {
+        showBinary = value;
+        return *this;
+    }
+
+    ArgumentMetadata& withIsString(bool value) {
+        isString = value;
+        return *this;
+    }
+
+    ArgumentMetadata& withIsHex(bool value) {
+        isHex = value;
+        return *this;
+    }
+
+    ArgumentMetadata& withIsSigned(bool value) {
+        isSigned = value;
+        return *this;
+    }
 
     bool isString{false};
     bool isHex{false};
     bool showBinary{false};
+    bool isSigned{false};
     size_t size;
 };
 
 struct Metadata {
-
     void setShowAddress(bool value) { showAddress = value; }
     void setShowBinary(bool value) { showBinary = value; }
     void setIsString(bool value) { isString_ = value; }
@@ -59,7 +86,7 @@ class Hexer : public Config {
         uint8_t tabCounter = 0;
         for (uint8_t i = 0; i < sizeof(T); i++) {
             ss_ << std::setfill('0') << std::setw(2) << std::hex
-               << unsigned(*startAddr) << "\t\t   ";
+                << unsigned(*startAddr) << "\t\t   ";
             startAddr++;
             tabCounter++;
             if (tabCounter == 10) {
@@ -136,7 +163,7 @@ class Hexer : public Config {
     }
 
    public:
-    Hexer(T& value) : valueRef_(value){};
+    Hexer(T& value) : valueRef_(value) {};
 
     void run() {
         LOG_V() << "Running main...";

@@ -73,8 +73,6 @@ int main(int argc, char** argv) {
         auto isText = query_command.is_used("t");
         auto isHex = query_command.is_used("x");
 
-        Metadata metadata{};
-
         if (isText) {
             auto text = query_command.get<std::string>("t");
             converters::Hexer<std::string> hxr{text};
