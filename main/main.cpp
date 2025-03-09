@@ -11,6 +11,21 @@
 #include "eval.h"
 #include "logger.h"
 
+#define FOO(command, type, command_name)                 \
+    {                                                    \
+        auto variable = command.get<type>(command_name); \
+        converters::Hexer<type> hxr{variable};          \
+        hxr.setShowBinary(true);                         \
+        hxr.setIsString(false);                          \
+        hxr.run();                                       \
+    }
+
+// auto text = query_command.get<std::string>("t");
+// converters::Hexer<std::string> hxr{text};
+// hxr.setShowBinary(showBin);
+// hxr.setIsString(true);
+// hxr.run();
+
 int main(int argc, char** argv) {
     argparse::ArgumentParser program("hxr");
     program.add_argument("--log-level")
@@ -58,6 +73,8 @@ int main(int argc, char** argv) {
         auto isText = query_command.is_used("t");
         auto isHex = query_command.is_used("x");
 
+        Metadata metadata{};
+
         if (isText) {
             auto text = query_command.get<std::string>("t");
             converters::Hexer<std::string> hxr{text};
@@ -69,11 +86,12 @@ int main(int argc, char** argv) {
 
         if (isHex) {
             if (is64Bit) {
-                auto number = query_command.get<uint64_t>("x");
-                converters::Hexer<uint64_t> hxr{number};
-                hxr.setIsHex(isHex);
-                hxr.setShowBinary(showBin);
-                hxr.run();
+                FOO(query_command, uint64_t, "x");
+                // auto number = query_command.get<uint64_t>("x");
+                // converters::Hexer<uint64_t> hxr{number};
+                // hxr.setIsHex(isHex);
+                // hxr.setShowBinary(showBin);
+                // hxr.run();
             } else {
                 uint32_t number =
                     static_cast<uint32_t>(query_command.get<uint64_t>("x"));

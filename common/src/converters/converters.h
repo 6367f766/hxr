@@ -5,6 +5,28 @@
 
 namespace converters {
 
+/**
+ * @class Metadata
+ * @brief
+ *
+ * I think 64/32 bit should be changed to be numbits!
+ *
+ * Bit options:
+ *  8
+ *  16
+ *  32
+ *  64
+ *
+ */
+struct Metadata {
+    Metadata(size_t s) : size{s} {}
+
+    bool isString{false};
+    bool isHex{false};
+    bool showBinary{false};
+    size_t size;
+};
+
 struct Metadata {
 
     void setShowAddress(bool value) { showAddress = value; }
