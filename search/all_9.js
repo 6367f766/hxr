@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['log_0',['log',['../classcommon_1_1Logger.html#a71aa9307f6f5ad59b25193cf51dc5a2c',1,'common::Logger']]],
+  ['log_0',['log',['../classconverters_1_1Hexer.html#acc0f6a23d183054ac60c2c636e69f213',1,'converters::Hexer::log()'],['../classcommon_1_1Logger.html#a71aa9307f6f5ad59b25193cf51dc5a2c',1,'common::Logger::log()']]],
   ['log_5fb_1',['LOG_B',['../logger_8h.html#a3d61a587541bf112635283ad55dbef12',1,'logger.h']]],
   ['log_5fd_2',['LOG_D',['../logger_8h.html#acb8e8b0a9f2982c5a03d0a41259a331b',1,'logger.h']]],
   ['log_5fentrypoint_3',['LOG_ENTRYPOINT',['../logger_8h.html#a4938ba1573b2cf06ec84b6166693457d',1,'logger.h']]],
