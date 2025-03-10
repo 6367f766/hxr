@@ -4,6 +4,10 @@
 #include <cstdint>
 #include <iomanip>
 #include <sstream>
+#include <type_traits>
+
+#include "common.h"
+#include "logger.h"
 
 namespace converters {
 
@@ -48,12 +52,20 @@ struct ArgumentMetadata {
         return *this;
     }
 
+    template <class T>
+    ArgumentMetadata& withArgumentType() {
+        isSigned = std::is_signed_v<T>;
+        isFloating = std::is_floating_point_v<T>;
+        return *this;
+    }
+
     void setConfig(ArgumentMetadata newArg) { *this = newArg; }
 
     bool isString{false};
     bool isHex{false};
     bool showBinary{false};
     bool isSigned{false};
+    bool isFloating{false};
     size_t size;
 };
 
@@ -62,6 +74,21 @@ class Hexer : public Config {
     T& valueRef_;
     std::ostringstream ss_;
 
+    void trackCounter(uint8_t& ref, std::ostringstream& lineRef,
+                      bool isLast = false) {
+        if (ref == 8) {
+            ss_ << lineRef.str();
+            ss_ << std::endl;
+            lineRef.str("");
+
+            if (isLast) {
+                ref = 0;
+                ss_ << std::endl;
+            }
+        }
+    }
+
+   public:
     void toHex() {
         uint8_t* startAddr = reinterpret_cast<uint8_t*>(&valueRef_);
         ss_ << "   ";
@@ -81,7 +108,7 @@ class Hexer : public Config {
         ss_ << std::endl;
     }
 
-    void toBin() {
+    void toBin(std::string_view newline = "\n") {
         uint8_t* startAddr = reinterpret_cast<uint8_t*>(&valueRef_);
         uint8_t tabCounter = 0;
         for (uint8_t i = 0; i < Config::size; i++) {
@@ -98,24 +125,11 @@ class Hexer : public Config {
                 tabCounter = 0;
             }
         }
-        ss_ << std::endl;
+        ss_ << newline;
     }
 
-    void trackCounter(uint8_t& ref, std::ostringstream& lineRef,
-                      bool isLast = false) {
-        if (ref == 8) {
-            ss_ << lineRef.str();
-            ss_ << std::endl;
-            lineRef.str("");
-
-            if (isLast) {
-                ref = 0;
-                ss_ << std::endl;
-            }
-        }
-    }
-
-    void showString(char* data, uint32_t maxSize) {
+    void showString(char* data, uint32_t maxSize,
+                    std::string_view newline = "\n") {
         LOG_V() << "Showing string...";
         uint8_t* startAddr = reinterpret_cast<uint8_t*>(data);
         uint8_t counter = 0;
@@ -140,12 +154,11 @@ class Hexer : public Config {
             trackCounter(counter, line2);
             trackCounter(counter, line3, true);
         }
-        ss_ << line1.str() << "\n";
-        ss_ << line2.str() << "\n";
-        ss_ << line3.str() << "\n";
+        ss_ << line1.str() << newline;
+        ss_ << line2.str() << newline;
+        ss_ << line3.str() << newline;
     }
 
-   public:
     Hexer(T& value) : valueRef_(value), Config{0} {};
 
     void setConfig(Config config) {
@@ -180,6 +193,8 @@ class Hexer : public Config {
         }
         LOG_B() << ss_.str();
     }
+
+    void log() { LOG_B() << ss_.str(); }
 };
 
 template <class T>

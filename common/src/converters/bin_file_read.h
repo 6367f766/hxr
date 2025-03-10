@@ -5,6 +5,7 @@
 #include <cstring>
 #include <string_view>
 
+#include "converters.h"
 #include "logger.h"
 
 class BinFileRead {
@@ -17,14 +18,22 @@ class BinFileRead {
         std::ifstream file(filename_.data());
         char character;
         T value;
-        T counter = 0;
+        uint32_t counter = 0;
         std::array<char, sizeof(T)> charvec_{};
 
         while (file.get(character)) {
             if (counter == sizeof(T)) {
                 counter = 0;
                 std::memcpy(&value, charvec_.data(), sizeof(T));
-                LOG_B() << value;
+                auto metadata = converters::ArgumentMetadata{sizeof(T)}
+                                    .withShowBinary(true)
+                                    .withArgumentType<T>();
+                converters::Hexer<T> hxr{value};
+                hxr.setConfig(metadata);
+                hxr.toBin(" ");
+                hxr.log();
+                /// XXX: would be nice to not use std::cout here
+                std::cout << value;
 
                 charvec_.fill(0);
                 charvec_[counter] = character;
@@ -36,7 +45,15 @@ class BinFileRead {
             counter++;
         }
         std::memcpy(&value, charvec_.data(), sizeof(T));
-        LOG_B() << value;
+        auto metadata = converters::ArgumentMetadata{sizeof(T)}
+                            .withShowBinary(true)
+                            .withArgumentType<T>();
+        converters::Hexer<T> hxr{value};
+        hxr.setConfig(metadata);
+        hxr.toBin(" ");
+        hxr.log();
+        /// XXX: would be nice to not use std::cout here
+        std::cout << value;
         file.close();
     }
 

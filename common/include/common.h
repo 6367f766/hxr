@@ -1,3 +1,6 @@
+#ifndef COMMON_H
+#define COMMON_H
+
 #include <stdint.h>
 
 #include "logger.h"
@@ -50,3 +53,4 @@ struct SizedText {
     std::array<char, size>& get() { return text_; }
 };
 
+#endif
