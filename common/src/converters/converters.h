@@ -96,7 +96,7 @@ class Hexer : public Config {
         uint8_t tabCounter = 0;
         for (uint8_t i = 0; i < Config::size; i++) {
             ss_ << std::setfill('0') << std::setw(2) << std::hex
-                << unsigned(*startAddr) << "\t\t   ";
+                << unsigned(*startAddr) << "\t\t";
             startAddr++;
             tabCounter++;
             if (tabCounter == 10) {
