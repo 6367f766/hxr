@@ -48,7 +48,7 @@ int main(int argc, char** argv) {
     evaluate_command.add_argument("--type")
         .help(
             "The type to parse. Note, this is a single type. Supported types "
-            "are:")
+            "are: u32, i32, b[ool], f32(but it's broken!)")
         .default_value("u32");
 
     program.add_subparser(query_command);
@@ -98,29 +98,32 @@ int main(int argc, char** argv) {
             auto filename = evaluate_command.get<std::string>("file");
             LOG_D() << "file present: " << filename;
             BinFileRead bfr{filename};
-            if (evaluate_command.get<std::string>("type").find("u32") !=
+            auto type_argument = evaluate_command.get<std::string>("type");
+            if (type_argument.find("u32") !=
                 std::string::npos) {
                 bfr.run<uint32_t>();
                 return 0;
             }
 
-            if (evaluate_command.get<std::string>("type").find("int32") !=
+            if (type_argument.find("i32") !=
                 std::string::npos) {
                 bfr.run<int32_t>();
                 return 0;
             }
 
-            if (evaluate_command.get<std::string>("type").find("f32") !=
+            if (type_argument.find("f32") !=
                 std::string::npos) {
                 bfr.run<float>();
                 return 0;
             }
 
-            if (evaluate_command.get<std::string>("type").find("b") !=
+            if (type_argument.find("b") !=
                 std::string::npos) {
                 bfr.run<bool>();
                 return 0;
             }
+            LOG_B() << "Not implemented for type: " << type_argument;
+            return -1;
 
         } else {
             /// XXX: move this to subcommand... Likely the rest too
