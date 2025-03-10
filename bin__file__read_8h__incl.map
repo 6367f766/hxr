@@ -1,0 +1,19 @@
+<map id="common/src/converters/bin_file_read.h" name="common/src/converters/bin_file_read.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="116,5,291,50"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,98,61,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,53,75,93,73,89,157,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="84,98,147,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,52,143,89,139,85,179,48"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="171,98,236,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="206,50,206,82,201,82,201,50"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="261,98,357,126"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="233,48,282,86,279,90,230,53"/>
+<area shape="rect" id="Node000006" href="$logger_8h.html" title=" " alt="" coords="382,98,455,126"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="262,48,371,90,369,95,260,53"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="290,174,355,201"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="403,128,353,166,350,162,400,124"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="379,174,458,201"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="421,126,421,158,416,158,416,126"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="483,174,546,201"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="437,124,487,162,484,166,434,128"/>
+</map>
