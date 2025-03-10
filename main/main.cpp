@@ -43,7 +43,13 @@ int main(int argc, char** argv) {
     evaluate_group.add_argument("--eval")
         .help("Evaluate an expression. Currently only hex is allowed")
         .flag();
-    evaluate_command.add_argument("--file"); 
+
+    evaluate_command.add_argument("--file");
+    evaluate_command.add_argument("--type")
+        .help(
+            "The type to parse. Note, this is a single type. Supported types "
+            "are:")
+        .default_value("u32");
 
     program.add_subparser(query_command);
     program.add_subparser(evaluate_command);
@@ -92,7 +98,29 @@ int main(int argc, char** argv) {
             auto filename = evaluate_command.get<std::string>("file");
             LOG_D() << "file present: " << filename;
             BinFileRead bfr{filename};
-            bfr.run<uint32_t>();
+            if (evaluate_command.get<std::string>("type").find("u32") !=
+                std::string::npos) {
+                bfr.run<uint32_t>();
+                return 0;
+            }
+
+            if (evaluate_command.get<std::string>("type").find("int32") !=
+                std::string::npos) {
+                bfr.run<int32_t>();
+                return 0;
+            }
+
+            if (evaluate_command.get<std::string>("type").find("f32") !=
+                std::string::npos) {
+                bfr.run<float>();
+                return 0;
+            }
+
+            if (evaluate_command.get<std::string>("type").find("b") !=
+                std::string::npos) {
+                bfr.run<bool>();
+                return 0;
+            }
 
         } else {
             /// XXX: move this to subcommand... Likely the rest too
