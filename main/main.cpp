@@ -66,7 +66,6 @@ int main(int argc, char** argv) {
     common::Logger::getLogger().setSeverity(
         program.get<std::string>("--log-level"));
 
-
     if (program.is_subcommand_used("query")) {
         auto showBin = query_command.get<bool>("b");
         auto size = query_command.get<uint16_t>("s");
@@ -99,26 +98,22 @@ int main(int argc, char** argv) {
             LOG_D() << "file present: " << filename;
             BinFileRead bfr{filename};
             auto type_argument = evaluate_command.get<std::string>("type");
-            if (type_argument.find("u32") !=
-                std::string::npos) {
+            if (type_argument.find("u32") != std::string::npos) {
                 bfr.run<uint32_t>();
                 return 0;
             }
 
-            if (type_argument.find("i32") !=
-                std::string::npos) {
+            if (type_argument.find("i32") != std::string::npos) {
                 bfr.run<int32_t>();
                 return 0;
             }
 
-            if (type_argument.find("f32") !=
-                std::string::npos) {
+            if (type_argument.find("f32") != std::string::npos) {
                 bfr.run<float>();
                 return 0;
             }
 
-            if (type_argument.find("b") !=
-                std::string::npos) {
+            if (type_argument.find("b") != std::string::npos) {
                 bfr.run<bool>();
                 return 0;
             }

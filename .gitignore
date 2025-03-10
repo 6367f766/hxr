@@ -48,3 +48,6 @@ result
 
 # doxygen
 doc_out
+
+# Python
+*.pyc

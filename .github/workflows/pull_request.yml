@@ -11,3 +11,4 @@ jobs:
         submodules: recursive
     - uses: cachix/install-nix-action@v27
     - run: nix develop -c cmake --workflow --preset release
+    - run: nix develop -c pytest -s test -vv 

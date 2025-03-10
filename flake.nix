@@ -53,6 +53,7 @@
         clang-tools
         doxygen
         graphviz
+        (python3.withPackages(ps: with ps; [ pytest autopep8]))
       ];
 
       IS_NIX_SHELL = 1;
