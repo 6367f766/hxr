@@ -11,26 +11,13 @@
 #include "eval.h"
 #include "logger.h"
 
-/// XXX: how to make this into the macro below
-// auto number = query_command.get<int64_t>(metadata.isHex ? "x" : "d");
-// converters::Hexer<int64_t> hxr{number};
-// hxr.setConfig(metadata);
-// hxr.run();
-
-#define FOO(command, type, command_name)                 \
+#define HXR(config, command, type, command_name)         \
     {                                                    \
         auto variable = command.get<type>(command_name); \
-        converters::Hexer<type> hxr{variable};          \
-        hxr.setShowBinary(true);                         \
-        hxr.setIsString(false);                          \
+        converters::Hexer<type> hxr{variable};           \
+        hxr.setConfig(config);                           \
         hxr.run();                                       \
     }
-
-// auto text = query_command.get<std::string>("t");
-// converters::Hexer<std::string> hxr{text};
-// hxr.setShowBinary(showBin);
-// hxr.setIsString(true);
-// hxr.run();
 
 int main(int argc, char** argv) {
     argparse::ArgumentParser program("hxr");
@@ -88,25 +75,13 @@ int main(int argc, char** argv) {
                             .withIsHex(isHex);
 
         if (isText) {
-            auto text = query_command.get<std::string>("t");
-            converters::Hexer<std::string> hxr{text};
-            hxr.setConfig(metadata);
-            hxr.run();
+            HXR(metadata, query_command, std::string, "t");
             return 0;
         }
-
         if (isSigned) {
-            auto number =
-                query_command.get<int64_t>(metadata.isHex ? "x" : "d");
-            converters::Hexer<int64_t> hxr{number};
-            hxr.setConfig(metadata);
-            hxr.run();
+            HXR(metadata, query_command, int64_t, metadata.isHex ? "x" : "d");
         } else {
-            auto number =
-                query_command.get<uint64_t>(metadata.isHex ? "x" : "u");
-            converters::Hexer<uint64_t> hxr{number};
-            hxr.setConfig(metadata);
-            hxr.run();
+            HXR(metadata, query_command, uint64_t, metadata.isHex ? "x" : "u");
         }
 
         return 0;
