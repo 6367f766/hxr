@@ -10,8 +10,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: cachix/install-nix-action@v27
-    - run: nix develop -c doxygen Doxyfile
+    - name: Doxygen Action
+      uses: mattnotmitt/doxygen-action@v1.1.0
+      with:
+        doxyfile-path: "./Doxyfile" 
+        working-directory: "." 
     
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v4
