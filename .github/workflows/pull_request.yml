@@ -1,0 +1,13 @@
+name: "Pull Request"
+on:
+  pull_request:
+  push:
+jobs:
+  build-release-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - uses: cachix/install-nix-action@v27
+    - run: nix develop -c cmake --workflow --preset release
