@@ -11,3 +11,10 @@ jobs:
         submodules: recursive
     - uses: cachix/install-nix-action@v27
     - run: nix develop -c cmake --workflow --preset release
+  build-doxygen:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@v27
+    - run: nix develop -c doxygen Doxyfile
+
