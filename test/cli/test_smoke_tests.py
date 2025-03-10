@@ -58,9 +58,9 @@ class BetterVisual:
 
 @pytest.mark.parametrize("test_input,expected",
                          [
-                             (["query", "-d", "100"], BetterVisual("-64-00-00-00-",
+                             (["query", "-d", "-100"], BetterVisual("-9c-ff-ff-ff-",
                               ["1   ", "3\t\t", "1\t\t\n"]).get()),
-                             (["query", "-db", "100"], BetterVisual("-64-00-00-00-0110 0100----",
+                             (["query", "-bu", "100"], BetterVisual("-64-00-00-00-0110 0100----",
                               ["1   ", "3\t\t", "1\t\t\n", "3\t0000 0000", "1\t\n"]).get()),
                              (["query", "-x", "ff"],
                               BetterVisual("-255-", ["1", "1\n"]).get()),
