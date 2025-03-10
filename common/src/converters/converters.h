@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <iomanip>
 #include <sstream>
+#include <type_traits>
 
 namespace converters {
 
@@ -48,12 +49,20 @@ struct ArgumentMetadata {
         return *this;
     }
 
+    template <class T>
+    ArgumentMetadata& withArgumentType() {
+        isSigned = std::is_signed_v<T>;
+        isFloating = std::is_floating_point_v<T>;
+        return *this;
+    }
+
     void setConfig(ArgumentMetadata newArg) { *this = newArg; }
 
     bool isString{false};
     bool isHex{false};
     bool showBinary{false};
     bool isSigned{false};
+    bool isFloating{false};
     size_t size;
 };
 
