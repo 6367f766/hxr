@@ -1,9 +1,14 @@
 var searchData=
 [
-  ['test_0',['TEST',['../test__common__include_8cpp.html#afaee2019eb170c4af6af4e20d9bc64bf',1,'TEST(TestArgumentMetadata, supportedArgs):&#160;test_common_include.cpp'],['../test__common__include_8cpp.html#a5a6a550dae93d0add588570305f27de0',1,'TEST(TestOne, test):&#160;test_common_include.cpp'],['../test__common__include_8cpp.html#acd61dae2e079edaa0a09e50d081b15e5',1,'TEST(TestEval, init):&#160;test_common_include.cpp'],['../test__common__include_8cpp.html#a15df1cc48b609893224c876478366749',1,'TEST(TestLogger, init):&#160;test_common_include.cpp']]],
-  ['test_5fcommon_5finclude_2ecpp_1',['test_common_include.cpp',['../test__common__include_8cpp.html',1,'']]],
-  ['text_5f_2',['text_',['../structSizedText.html#ac0c18ea6bb7118467f88c0d0ba4273b1',1,'SizedText']]],
-  ['tobin_3',['toBin',['../classconverters_1_1Hexer.html#aa3757db9d27541d38f4f4afa4cb446a1',1,'converters::Hexer']]],
-  ['tohex_4',['toHex',['../classconverters_1_1Hexer.html#aa380f3d896a29ac170613757377bd177',1,'converters::Hexer::toHex()'],['../namespaceconverters.html#a103e0ac5403dcd456c94dda0fb622393',1,'converters::toHex()']]],
-  ['trackcounter_5',['trackCounter',['../classconverters_1_1Hexer.html#a5b3a81bdc51f3f91175c174160a112e0',1,'converters::Hexer']]]
+  ['scopedlog_0',['ScopedLog',['../classcommon_1_1ScopedLog.html',1,'common::ScopedLog'],['../classcommon_1_1ScopedLog.html#a5b663c8bf78d0361fe190f8e3ea9d994',1,'common::ScopedLog::ScopedLog()']]],
+  ['setconfig_1',['setConfig',['../structconverters_1_1ArgumentMetadata.html#ad2e1eb46c29a23c55232282d8c1e6af4',1,'converters::ArgumentMetadata::setConfig()'],['../classconverters_1_1Hexer.html#adaa987f26f9862e489967a5bffa7038b',1,'converters::Hexer::setConfig()']]],
+  ['setseverity_2',['setSeverity',['../classcommon_1_1Logger.html#a44e84a2b623749ba41382cbcb2195ae0',1,'common::Logger']]],
+  ['severity_3',['Severity',['../namespacecommon.html#a2939316d1e72933bed9700e212ceec36',1,'common']]],
+  ['showbinary_4',['showBinary',['../structconverters_1_1ArgumentMetadata.html#a5531759d22b0e7acdbc45966c6326c19',1,'converters::ArgumentMetadata']]],
+  ['showstring_5',['showString',['../classconverters_1_1Hexer.html#a9e1d1338a76004f55bd620b9cb8a7472',1,'converters::Hexer']]],
+  ['size_6',['size',['../structSizedText.html#afc2d5a7bab2c44490929d06ef04d237a',1,'SizedText::size'],['../structconverters_1_1ArgumentMetadata.html#a6e7dcab0626aefe92ab3ec4f20c37a00',1,'converters::ArgumentMetadata::size']]],
+  ['sizedexpression_5f_7',['sizedExpression_',['../classEval.html#aeb6cfb16e7c417ca597c8d57e9382e44',1,'Eval']]],
+  ['sizedtext_8',['SizedText',['../structSizedText.html',1,'SizedText&lt; Size &gt;'],['../structSizedText.html#aa4b18bc6d375d694826ab2141d36f1c2',1,'SizedText::SizedText()'],['../structSizedText.html#aa6d2c72ef264a55b31445b35965075af',1,'SizedText::SizedText(const char *s)']]],
+  ['sizedtext_3c_20100_20_3e_9',['SizedText&lt; 100 &gt;',['../structSizedText.html',1,'']]],
+  ['ss_5f_10',['ss_',['../classconverters_1_1Hexer.html#a7187a1cf549ae3a8df6b77da353e46e4',1,'converters::Hexer']]]
 ];

@@ -25,7 +25,11 @@
 var NAVTREE =
 [
   [ "hxr", "index.html", [
-    [ "hxr", "md_README.html", null ],
+    [ "hxr", "md_README.html", [
+      [ "How to use query command:", "md_README.html#autotoc_md1", null ],
+      [ "How to use evaluate command", "md_README.html#autotoc_md2", null ],
+      [ "How to build", "md_README.html#autotoc_md3", null ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [

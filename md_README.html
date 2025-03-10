@@ -106,7 +106,67 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
-</div></div><!-- contents -->
+<p>H[e]x[e]r is a tool for binary-related visualisation.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+How to use query command:</h1>
+<p><code>hxr</code> is brilliant at conversions. If you want to convert a number from decimal to hex:</p>
+<div class="fragment"><div class="line">$ hxr query -u 255</div>
+<div class="line">   ff              00              00              00</div>
+</div><!-- fragment --><p>If you want to see binary output too, add <code>-b</code></p>
+<div class="fragment"><div class="line">$ hxr query -bu 255</div>
+<div class="line">   ff              00              00              00</div>
+<div class="line">1111 1111       0000 0000       0000 0000       0000 0000</div>
+</div><!-- fragment --><p> Is 4 bytes too much? Tell it the size <code>-s</code></p>
+<div class="fragment"><div class="line">$ hxr query -bu 255 -s 1</div>
+<div class="line">   ff</div>
+<div class="line">1111 1111</div>
+</div><!-- fragment --><p>What about signed integers?</p>
+<div class="fragment"><div class="line">hxr query -bd -255</div>
+<div class="line">   01              ff              ff              ff</div>
+<div class="line">0000 0001       1111 1111       1111 1111       1111 1111</div>
+</div><!-- fragment --><p>What about text?</p>
+<div class="fragment"><div class="line">hxr query -t &quot;hello&quot;</div>
+<div class="line">h               e               l               l               o</div>
+<div class="line">68              65              6c              6c              6f</div>
+<div class="line">0110 1000       0110 0101       0110 1100       0110 1100       0110 1111</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
+How to use evaluate command</h1>
+<p>The evaluate command has two modes: an expression mode (experimental) and an input file mode.</p>
+<p>To use the evaluate command with a file, simple give it a file and the type word-size for every chunk:</p>
+<div class="fragment"><div class="line">hxr evaluate --file main.cpp --type b</div>
+<div class="line">0010 0011        35</div>
+<div class="line">0110 1001        105</div>
+<div class="line">0110 1110        110</div>
+<div class="line">0110 0011        99</div>
+<div class="line">0110 1100        108</div>
+<div class="line">0111 0101        117</div>
+<div class="line">0110 0100        100</div>
+<div class="line">0110 0101        101</div>
+<div class="line">0010 0000        32</div>
+<div class="line">0011 1100        60</div>
+<div class="line">0110 0001        97</div>
+<div class="line">0111 0010        114</div>
+<div class="line">0111 0010        114</div>
+<div class="line">0110 0001        97</div>
+<div class="line">0111 1001        121</div>
+<div class="line">0011 1110        62</div>
+</div><!-- fragment --><p> and it will read one byte at a time, and give you a decimal output of every byte.</p>
+<p>If you have other data and know it's type, for instance a binary dump of an array of unsigned 32-bit integers:</p>
+<div class="fragment"><div class="line">hxr mem.bin --type u32</div>
+<div class="line">0110 0100       0000 0000       0000 0000       0000 0000        100</div>
+<div class="line">1100 1000       0000 0000       0000 0000       0000 0000        200</div>
+<div class="line">0010 1100       0000 0001       0000 0000       0000 0000        300</div>
+<div class="line">1001 0000       0000 0001       0000 0000       0000 0000        400</div>
+<div class="line">1111 0100       0000 0001       0000 0000       0000 0000        500</div>
+</div><!-- fragment --><p>Notice how the last column in both examples is the decimal representation of the data.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+How to build</h1>
+<p>The easiest way is to use nix:</p>
+<div class="fragment"><div class="line">nix develop</div>
+<div class="line">cmake --workflow --preset debug --fresh</div>
+<div class="line"># or</div>
+<div class="line">cmake --workflow --preset release --fresh</div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
