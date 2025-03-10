@@ -1,14 +1,12 @@
 var searchData=
 [
-  ['log_0',['log',['../classconverters_1_1Hexer.html#acc0f6a23d183054ac60c2c636e69f213',1,'converters::Hexer::log()'],['../classcommon_1_1Logger.html#a71aa9307f6f5ad59b25193cf51dc5a2c',1,'common::Logger::log()']]],
-  ['log_5fb_1',['LOG_B',['../logger_8h.html#a3d61a587541bf112635283ad55dbef12',1,'logger.h']]],
-  ['log_5fd_2',['LOG_D',['../logger_8h.html#acb8e8b0a9f2982c5a03d0a41259a331b',1,'logger.h']]],
-  ['log_5fentrypoint_3',['LOG_ENTRYPOINT',['../logger_8h.html#a4938ba1573b2cf06ec84b6166693457d',1,'logger.h']]],
-  ['log_5fi_4',['LOG_I',['../logger_8h.html#a89f1ad7407dc42da49c3b61e7e10b81b',1,'logger.h']]],
-  ['log_5fv_5',['LOG_V',['../logger_8h.html#a2a875b3ac72842d4a86664a0ea3b6d0a',1,'logger.h']]],
-  ['log_5fw_6',['LOG_W',['../logger_8h.html#af88e26cdd30182564b5572eccc8d3e78',1,'logger.h']]],
-  ['logger_7',['Logger',['../classcommon_1_1Logger.html',1,'common::Logger'],['../classcommon_1_1Logger.html#a490782552c72fc204c77d1bf72dbaf91',1,'common::Logger::Logger()'],['../classcommon_1_1Logger.html#ab6f5a3e11d63d9e95cd92d5fe6ac2c8f',1,'common::Logger::Logger(const Logger &amp;)=delete'],['../classcommon_1_1Logger.html#a9ce209195fb4f591b5b4c3025955288f',1,'common::Logger::Logger(const Logger &amp;&amp;)=delete']]],
-  ['logger_2ecpp_8',['logger.cpp',['../logger_8cpp.html',1,'']]],
-  ['logger_2eh_9',['logger.h',['../logger_8h.html',1,'']]],
-  ['logicaloperator_10',['LogicalOperator',['../eval_8h.html#a79156061f9afe0684ce9b06cf0f41ed4',1,'eval.h']]]
+  ['info_0',['INFO',['../namespacecommon.html#a2939316d1e72933bed9700e212ceec36a551b723eafd6a31d444fcb2f5920fbd3',1,'common']]],
+  ['inplace_5fswap_1',['inplace_swap',['../namespaceconverters.html#a4f0e0f7d234822d5f4f2ff2ad62444f3',1,'converters']]],
+  ['isfirst_2',['isFirst',['../classcommon_1_1Logger.html#a9bd0668e756be215d9ea861167ea4fd7',1,'common::Logger']]],
+  ['isfloating_3',['isFloating',['../structconverters_1_1ArgumentMetadata.html#ada8e0b0dcfae70f9fcb6f05f6e78fc7f',1,'converters::ArgumentMetadata']]],
+  ['ishex_4',['isHex',['../structconverters_1_1ArgumentMetadata.html#ab947ecc6bcb6638ba6661d9e23091984',1,'converters::ArgumentMetadata']]],
+  ['issigned_5',['isSigned',['../structconverters_1_1ArgumentMetadata.html#a7d77507417bdeca04a0970b1617a5c83',1,'converters::ArgumentMetadata']]],
+  ['isstring_6',['isString',['../structconverters_1_1ArgumentMetadata.html#ad618fcb6e404a6873688d442e885ceff',1,'converters::ArgumentMetadata']]],
+  ['item1_7',['Item1',['../structOperation.html#a59d63df6657d83997f05eb7a8578d03f',1,'Operation']]],
+  ['item2_8',['Item2',['../structOperation.html#a89d0d3a8568d8ec0c45492ffb5530eb7',1,'Operation']]]
 ];

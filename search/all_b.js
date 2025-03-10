@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['not_0',['NOT',['../eval_8h.html#ac574768a9307086ab266ccf2c2111ce5a10df3d67626099df882920ba6552f16d',1,'NOT:&#160;eval.h'],['../eval_8h.html#a79156061f9afe0684ce9b06cf0f41ed4a10df3d67626099df882920ba6552f16d',1,'NOT:&#160;eval.h']]]
+  ['m_5f_0',['m_',['../classcommon_1_1Logger.html#ad76a1521dc137a79ca7cf5e3077d2842',1,'common::Logger']]],
+  ['main_1',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.cpp']]],
+  ['main_2ecpp_2',['main.cpp',['../main_8cpp.html',1,'']]]
 ];

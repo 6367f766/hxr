@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7escopedlog_0',['~ScopedLog',['../classcommon_1_1ScopedLog.html#a18dd51f7bf46eea9a7a757d8938caab3',1,'common::ScopedLog']]]
+  ['xor_0',['XOR',['../eval_8h.html#ac574768a9307086ab266ccf2c2111ce5a97675eb3f268048604dc5155511a2a4d',1,'eval.h']]]
 ];

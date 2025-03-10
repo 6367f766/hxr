@@ -1,13 +1,9 @@
 var searchData=
 [
-  ['c_5fstr_0',['c_str',['../structSizedText.html#aebf2d3d3dd469b9f0a6c35afabc40b42',1,'SizedText']]],
-  ['command_1',['How to use evaluate command',['../md_README.html#autotoc_md2',1,'']]],
-  ['command_3a_2',['How to use query command:',['../md_README.html#autotoc_md1',1,'']]],
-  ['common_3',['common',['../namespacecommon.html',1,'']]],
-  ['common_2eh_4',['common.h',['../common_8h.html',1,'']]],
-  ['compute_5',['compute',['../structOperation.html#aafdc0ac30c888e39d4f03ab1591a5ce3',1,'Operation']]],
-  ['converters_6',['converters',['../namespaceconverters.html',1,'']]],
-  ['converters_2ecpp_7',['converters.cpp',['../converters_8cpp.html',1,'']]],
-  ['converters_2eh_8',['converters.h',['../converters_8h.html',1,'']]],
-  ['currentseverity_5f_9',['currentSeverity_',['../classcommon_1_1Logger.html#a365a65893ac337b493dff81d6f56ab81',1,'common::Logger']]]
+  ['bettervisual_0',['BetterVisual',['../classtest__smoke__tests_1_1BetterVisual.html',1,'test_smoke_tests']]],
+  ['bin_5ffile_5fread_2eh_1',['bin_file_read.h',['../bin__file__read_8h.html',1,'']]],
+  ['binaryoperator_2',['BinaryOperator',['../eval_8h.html#ac574768a9307086ab266ccf2c2111ce5',1,'eval.h']]],
+  ['binfileread_3',['BinFileRead',['../classBinFileRead.html',1,'BinFileRead'],['../classBinFileRead.html#a5e3c0e06964799e4d0e2a6ba27da6bc5',1,'BinFileRead::BinFileRead()']]],
+  ['build_4',['How to build',['../md_README.html#autotoc_md3',1,'']]],
+  ['bypass_5',['BYPASS',['../namespacecommon.html#a2939316d1e72933bed9700e212ceec36a9eb9f378b4e4b7b1079ba068cfef75a8',1,'common']]]
 ];

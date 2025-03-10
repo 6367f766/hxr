@@ -212,7 +212,7 @@ $(function(){initNavTree('converters_8h_source.html',''); initResizable(true); }
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        uint8_t tabCounter = 0;</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">for</span> (uint8_t i = 0; i &lt; Config::size; i++) {</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <a class="code hl_variable" href="classconverters_1_1Hexer.html#a7187a1cf549ae3a8df6b77da353e46e4">ss_</a> &lt;&lt; std::setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt; std::setw(2) &lt;&lt; std::hex</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                &lt;&lt; unsigned(*startAddr) &lt;&lt; <span class="stringliteral">&quot;\t\t   &quot;</span>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                &lt;&lt; unsigned(*startAddr) &lt;&lt; <span class="stringliteral">&quot;\t\t&quot;</span>;</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            startAddr++;</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            tabCounter++;</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="keywordflow">if</span> (tabCounter == 10) {</div>

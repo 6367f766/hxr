@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_0',['Logger',['../classcommon_1_1Logger.html',1,'common']]]
+  ['hexer_0',['Hexer',['../classconverters_1_1Hexer.html',1,'converters']]]
 ];

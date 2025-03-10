@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fromstring_0',['fromString',['../structSizedText.html#a4642a8c8f32e234c8a378fd6b9e732d0',1,'SizedText']]]
+  ['eval_0',['Eval',['../classEval.html#a6e4f2ca92fc91a6f1157a9e9c2e796f6',1,'Eval']]]
 ];

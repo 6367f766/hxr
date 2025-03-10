@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operation_0',['Operation',['../structOperation.html',1,'']]]
+  ['logger_0',['Logger',['../classcommon_1_1Logger.html',1,'common']]]
 ];

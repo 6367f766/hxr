@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_0',['Operator',['../structOperation.html#a6b4900a4924cce9856894f090eae783e',1,'Operation']]]
+  ['new_5fstring_0',['new_string',['../classtest__smoke__tests_1_1BetterVisual.html#adad069be0700fbc8b04fd28493c52efb',1,'test_smoke_tests::BetterVisual']]]
 ];

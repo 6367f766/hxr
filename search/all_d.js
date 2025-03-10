@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['print_0',['print',['../structSizedText.html#a44be7f47f16b97cbe08387d46d3bd6e7',1,'SizedText']]],
-  ['print_5fhex_5fof_1',['PRINT_HEX_OF',['../converters_8h.html#ade90975eb40058aa2b2624d2b900bc86',1,'converters.h']]]
+  ['operation_0',['Operation',['../structOperation.html',1,'']]],
+  ['operator_1',['Operator',['../structOperation.html#a6b4900a4924cce9856894f090eae783e',1,'Operation']]],
+  ['operator_3c_3c_2',['operator&lt;&lt;',['../classcommon_1_1Logger.html#a3d817aef2ea12b12eea48f20bfbf28fc',1,'common::Logger']]],
+  ['operator_3d_3',['operator=',['../classcommon_1_1Logger.html#a7137a31221c1f89648541ec6e66c22df',1,'common::Logger::operator=(const Logger &amp;)=delete'],['../classcommon_1_1Logger.html#aecb1f7446f1b4dc3120f6f5ae6736c41',1,'common::Logger::operator=(const Logger &amp;&amp;)=delete']]],
+  ['or_4',['OR',['../eval_8h.html#ac574768a9307086ab266ccf2c2111ce5a1d00e7dce692e8dc3f6877f035e3a616',1,'OR:&#160;eval.h'],['../eval_8h.html#a79156061f9afe0684ce9b06cf0f41ed4a1d00e7dce692e8dc3f6877f035e3a616',1,'OR:&#160;eval.h']]]
 ];

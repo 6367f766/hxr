@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['valueref_5f_0',['valueRef_',['../classconverters_1_1Hexer.html#a6e8b45a8cdd3669761e1215a8cabac0a',1,'converters::Hexer']]]
+  ['text_5f_0',['text_',['../structSizedText.html#ac0c18ea6bb7118467f88c0d0ba4273b1',1,'SizedText']]]
 ];
