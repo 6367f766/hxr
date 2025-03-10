@@ -11,6 +11,14 @@
 #include "eval.h"
 #include "logger.h"
 
+#define HXR(config, command, type, command_name)         \
+    {                                                    \
+        auto variable = command.get<type>(command_name); \
+        converters::Hexer<type> hxr{variable};           \
+        hxr.setConfig(config);                           \
+        hxr.run();                                       \
+    }
+
 int main(int argc, char** argv) {
     argparse::ArgumentParser program("hxr");
     program.add_argument("--log-level")
@@ -26,7 +34,9 @@ int main(int argc, char** argv) {
     group.add_argument("-x").help("hex value unsigned").scan<'x', uint64_t>();
 
     query_command.add_argument("-b", "--binary").help("Show binary?").flag();
-    query_command.add_argument("-l", "--long").help("Is 64-bit? (long)").flag();
+    query_command.add_argument("-s")
+        .default_value(uint16_t{4})
+        .scan<'u', uint16_t>();
     program.add_subparser(query_command);
 
     auto& evaluate_group = evaluate_command.add_mutually_exclusive_group();
@@ -53,70 +63,27 @@ int main(int argc, char** argv) {
 
     if (program.is_subcommand_used("query")) {
         auto showBin = query_command.get<bool>("b");
-        auto is64Bit = query_command.get<bool>("l");
+        auto size = query_command.get<uint16_t>("s");
         bool isSigned = query_command.is_used("d");
         auto isText = query_command.is_used("t");
         auto isHex = query_command.is_used("x");
 
+        auto metadata = converters::ArgumentMetadata{size}
+                            .withShowBinary(showBin)
+                            .withIsSigned(isSigned)
+                            .withIsString(isText)
+                            .withIsHex(isHex);
+
         if (isText) {
-            auto text = query_command.get<std::string>("t");
-            converters::Hexer<std::string> hxr{text};
-            hxr.setShowBinary(showBin);
-            hxr.setIsString(true);
-            hxr.run();
+            HXR(metadata, query_command, std::string, "t");
             return 0;
         }
-
-        if (isHex) {
-            if (is64Bit) {
-                auto number = query_command.get<uint64_t>("x");
-                converters::Hexer<uint64_t> hxr{number};
-                hxr.setIsHex(isHex);
-                hxr.setShowBinary(showBin);
-                hxr.run();
-            } else {
-                uint32_t number =
-                    static_cast<uint32_t>(query_command.get<uint64_t>("x"));
-                converters::Hexer<uint32_t> hxr{number};
-                hxr.setIsHex(isHex);
-                hxr.setShowBinary(showBin);
-                hxr.run();
-            }
-            return 0;
-        }
-
         if (isSigned) {
-            if (is64Bit) {
-                LOG_V() << "Is signed 64";
-                int64_t number =
-                    static_cast<int64_t>(query_command.get<int64_t>("d"));
-                converters::Hexer<int64_t> hxr{number};
-                hxr.setShowBinary(showBin);
-                hxr.run();
-            } else {
-                LOG_V() << "Is signed 32";
-                int32_t number =
-                    static_cast<int32_t>(query_command.get<int64_t>("d"));
-                converters::Hexer<int32_t> hxr{number};
-                hxr.setShowBinary(showBin);
-                hxr.run();
-            }
+            HXR(metadata, query_command, int64_t, metadata.isHex ? "x" : "d");
         } else {
-            if (is64Bit) {
-                LOG_V() << "Is unsigned 64";
-                auto number = query_command.get<uint64_t>("u");
-                converters::Hexer<uint64_t> hxr{number};
-                hxr.setShowBinary(showBin);
-                hxr.run();
-            } else {
-                LOG_V() << "Is unsigned 32";
-                uint32_t number =
-                    static_cast<uint32_t>(query_command.get<uint64_t>("u"));
-                converters::Hexer<uint32_t> hxr{number};
-                hxr.setShowBinary(showBin);
-                hxr.run();
-            }
+            HXR(metadata, query_command, uint64_t, metadata.isHex ? "x" : "u");
         }
+
         return 0;
     } else {
         // evaluate

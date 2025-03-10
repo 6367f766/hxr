@@ -1,31 +1,63 @@
 #ifndef CONVERTERS_H
 #define CONVERTERS_H
+#include <bitset>
 #include <cstdint>
+#include <iomanip>
 #include <sstream>
 
 namespace converters {
 
-struct Metadata {
+/// @class ArgumentMetadata
+/// @brief Contains information on arguments
+/// `size` will contain the following bit options: TODO: maybe make this an
+/// enum
+///
+///  8
+///  16
+///  32
+///  64
+///
+// This is a do it all, no real sense struct... I've sort of put all this
+// together... in one place but there are no railings here...
+// do be careful here be dragons.
+struct ArgumentMetadata {
+    ArgumentMetadata(size_t s) : size{s} {}
 
-    void setShowAddress(bool value) { showAddress = value; }
-    void setShowBinary(bool value) { showBinary = value; }
-    void setIsString(bool value) { isString_ = value; }
-    void setIsHex(bool value) { isHex_ = value; }
+    ArgumentMetadata& withSize(size_t newSize) {
+        size = newSize;
+        return *this;
+    }
 
-    bool getShowAddress() { return showAddress; }
-    bool getShowBinary() { return showBinary; }
+    ArgumentMetadata& withShowBinary(bool value) {
+        showBinary = value;
+        return *this;
+    }
 
-    bool isString() { return isString_; }
-    bool isHex() { return isHex_; }
+    ArgumentMetadata& withIsString(bool value) {
+        isString = value;
+        return *this;
+    }
 
-   private:
-    bool showAddress{false};
+    ArgumentMetadata& withIsHex(bool value) {
+        isHex = value;
+        return *this;
+    }
+
+    ArgumentMetadata& withIsSigned(bool value) {
+        isSigned = value;
+        return *this;
+    }
+
+    void setConfig(ArgumentMetadata newArg) { *this = newArg; }
+
+    bool isString{false};
+    bool isHex{false};
     bool showBinary{false};
-    bool isString_{false};
-    bool isHex_{false};
+    bool isSigned{false};
+    size_t size;
 };
 
-template <class T, class Config = Metadata>
+template <class T, class Config = ArgumentMetadata>
 class Hexer : public Config {
     T& valueRef_;
     std::ostringstream ss_;
@@ -35,9 +67,9 @@ class Hexer : public Config {
         ss_ << "   ";
 
         uint8_t tabCounter = 0;
-        for (uint8_t i = 0; i < sizeof(T); i++) {
+        for (uint8_t i = 0; i < Config::size; i++) {
             ss_ << std::setfill('0') << std::setw(2) << std::hex
-               << unsigned(*startAddr) << "\t\t   ";
+                << unsigned(*startAddr) << "\t\t   ";
             startAddr++;
             tabCounter++;
             if (tabCounter == 10) {
@@ -52,7 +84,7 @@ class Hexer : public Config {
     void toBin() {
         uint8_t* startAddr = reinterpret_cast<uint8_t*>(&valueRef_);
         uint8_t tabCounter = 0;
-        for (uint8_t i = 0; i < sizeof(T); i++) {
+        for (uint8_t i = 0; i < Config::size; i++) {
             std::bitset<4> firstByte{unsigned((*startAddr >> 4) & 0xff)};
             ss_ << firstByte << " ";
             std::bitset<4> lastByte{unsigned(*startAddr & 0xff)};
@@ -114,17 +146,22 @@ class Hexer : public Config {
     }
 
    public:
-    Hexer(T& value) : valueRef_(value){};
+    Hexer(T& value) : valueRef_(value), Config{0} {};
+
+    void setConfig(Config config) {
+        Config::setConfig(config);
+    }
 
     void run() {
         LOG_V() << "Running main...";
-        if (Config::isHex()) {
+        if (Config::isHex) {
             LOG_V() << "Value is hex";
             ss_ << valueRef_ << std::endl;
-            if (Config::getShowBinary()) {
+            if (Config::showBinary) {
                 LOG_V() << "Show binary on...";
                 toBin();
             }
+            LOG_B() << ss_.str();
             return;
         }
 
@@ -136,7 +173,7 @@ class Hexer : public Config {
                        sizedText.getSize());
         } else {
             toHex();
-            if (Config::getShowBinary()) {
+            if (Config::showBinary) {
                 LOG_V() << "Show binary on...";
                 toBin();
             }
