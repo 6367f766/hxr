@@ -5,5 +5,5 @@ var searchData=
   ['how_20to_20use_20evaluate_20command_2',['How to use evaluate command',['../md_README.html#autotoc_md2',1,'']]],
   ['how_20to_20use_20query_20command_3a_3',['How to use query command:',['../md_README.html#autotoc_md1',1,'']]],
   ['hxr_4',['HXR',['../main_8cpp.html#a2cabf447d275180332eb932416fedfa7',1,'main.cpp']]],
-  ['hxr_5',['hxr',['../md_README.html',1,'']]]
+  ['hxr_5',['hxr',['../md_README.html#autotoc_md0',1,'']]]
 ];

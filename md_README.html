@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>hxr: hxr</title>
+<title>hxr: README</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -102,13 +102,15 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">hxr</div></div>
+  <div class="headertitle"><div class="title">README</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
+<div class="textblock"><p><a href="https://6367f766.github.io/hxr/md_README.html"><img src="https://img.shields.io/badge/View-Documentation-2ea44f" alt="View - Documentation" class="inline"/></a></p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+hxr</h1>
 <p>H[e]x[e]r is a tool for binary-related visualisation.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
-How to use query command:</h1>
+<h2><a class="anchor" id="autotoc_md1"></a>
+How to use query command:</h2>
 <p><code>hxr</code> is brilliant at conversions. If you want to convert a number from decimal to hex:</p>
 <div class="fragment"><div class="line">$ hxr query -u 255</div>
 <div class="line">   ff              00              00              00</div>
@@ -129,8 +131,8 @@ How to use query command:</h1>
 <div class="line">h               e               l               l               o</div>
 <div class="line">68              65              6c              6c              6f</div>
 <div class="line">0110 1000       0110 0101       0110 1100       0110 1100       0110 1111</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
-How to use evaluate command</h1>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md2"></a>
+How to use evaluate command</h2>
 <p>The evaluate command has two modes: an expression mode (experimental) and an input file mode.</p>
 <p>To use the evaluate command with a file, simple give it a file and the type word-size for every chunk:</p>
 <div class="fragment"><div class="line">hxr evaluate --file main.cpp --type b</div>
@@ -159,8 +161,8 @@ How to use evaluate command</h1>
 <div class="line">1001 0000       0000 0001       0000 0000       0000 0000        400</div>
 <div class="line">1111 0100       0000 0001       0000 0000       0000 0000        500</div>
 </div><!-- fragment --><p>Notice how the last column in both examples is the decimal representation of the data.</p>
-<h1><a class="anchor" id="autotoc_md3"></a>
-How to build</h1>
+<h2><a class="anchor" id="autotoc_md3"></a>
+How to build</h2>
 <p>The easiest way is to use nix:</p>
 <div class="fragment"><div class="line">nix develop</div>
 <div class="line">cmake --workflow --preset debug --fresh</div>
