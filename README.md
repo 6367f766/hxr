@@ -1,3 +1,5 @@
+[![View - Documentation](https://img.shields.io/badge/View-Documentation-2ea44f)](https://6367f766.github.io/hxr/md_README.html)
+
 # hxr
 
 H[e]x[e]r is a tool for binary-related visualisation.
