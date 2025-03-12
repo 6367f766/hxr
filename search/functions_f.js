@@ -4,6 +4,5 @@ var searchData=
   ['test_5fcli_5fdefault_1',['test_cli_default',['../namespacetest__smoke__tests.html#a892ddc70580b8e197c6c4964442cfecd',1,'test_smoke_tests']]],
   ['test_5frelease_5fpackage_5fis_5fbuilt_2',['test_release_package_is_built',['../namespacetest__smoke__tests.html#a562189128e7e773e2c56d705de4b2077',1,'test_smoke_tests']]],
   ['tobin_3',['toBin',['../classconverters_1_1Hexer.html#aa3757db9d27541d38f4f4afa4cb446a1',1,'converters::Hexer']]],
-  ['tohex_4',['toHex',['../classconverters_1_1Hexer.html#aa380f3d896a29ac170613757377bd177',1,'converters::Hexer::toHex()'],['../namespaceconverters.html#a103e0ac5403dcd456c94dda0fb622393',1,'converters::toHex()']]],
-  ['trackcounter_5',['trackCounter',['../classconverters_1_1Hexer.html#a5b3a81bdc51f3f91175c174160a112e0',1,'converters::Hexer']]]
+  ['tohex_4',['toHex',['../classconverters_1_1Hexer.html#aa380f3d896a29ac170613757377bd177',1,'converters::Hexer::toHex()'],['../namespaceconverters.html#a103e0ac5403dcd456c94dda0fb622393',1,'converters::toHex()']]]
 ];

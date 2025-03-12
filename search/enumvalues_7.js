@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['warning_0',['WARNING',['../namespacecommon.html#a2939316d1e72933bed9700e212ceec36a059e9861e0400dfbe05c98a841f3f96b',1,'common']]]
+  ['uninitialised_0',['Uninitialised',['../colourprint_8h.html#a362ee02420f01372f6d63edf30a9d1f3a962074a9de1cf3d6d7b6f955a0a94820',1,'colourprint.h']]]
 ];

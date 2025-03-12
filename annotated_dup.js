@@ -15,5 +15,7 @@ var annotated_dup =
     [ "BinFileRead", "classBinFileRead.html", "classBinFileRead" ],
     [ "Eval", "classEval.html", "classEval" ],
     [ "Operation", "structOperation.html", "structOperation" ],
-    [ "SizedText", "structSizedText.html", "structSizedText" ]
+    [ "SentenceGenerator", "classSentenceGenerator.html", "classSentenceGenerator" ],
+    [ "SizedText", "structSizedText.html", "structSizedText" ],
+    [ "Word", "structWord.html", "structWord" ]
 ];

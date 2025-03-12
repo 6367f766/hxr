@@ -10,5 +10,7 @@ var hierarchy =
     [ "common::Logger", "classcommon_1_1Logger.html", null ],
     [ "Operation< T >", "structOperation.html", null ],
     [ "common::ScopedLog", "classcommon_1_1ScopedLog.html", null ],
-    [ "SizedText< Size >", "structSizedText.html", null ]
+    [ "SentenceGenerator", "classSentenceGenerator.html", null ],
+    [ "SizedText< Size >", "structSizedText.html", null ],
+    [ "Word", "structWord.html", null ]
 ];

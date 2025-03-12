@@ -11,6 +11,5 @@ var searchData=
   ['to_20use_20evaluate_20command_8',['How to use evaluate command',['../md_README.html#autotoc_md2',1,'']]],
   ['to_20use_20query_20command_3a_9',['How to use query command:',['../md_README.html#autotoc_md1',1,'']]],
   ['tobin_10',['toBin',['../classconverters_1_1Hexer.html#aa3757db9d27541d38f4f4afa4cb446a1',1,'converters::Hexer']]],
-  ['tohex_11',['toHex',['../classconverters_1_1Hexer.html#aa380f3d896a29ac170613757377bd177',1,'converters::Hexer::toHex()'],['../namespaceconverters.html#a103e0ac5403dcd456c94dda0fb622393',1,'converters::toHex()']]],
-  ['trackcounter_12',['trackCounter',['../classconverters_1_1Hexer.html#a5b3a81bdc51f3f91175c174160a112e0',1,'converters::Hexer']]]
+  ['tohex_11',['toHex',['../classconverters_1_1Hexer.html#aa380f3d896a29ac170613757377bd177',1,'converters::Hexer::toHex()'],['../namespaceconverters.html#a103e0ac5403dcd456c94dda0fb622393',1,'converters::toHex()']]]
 ];
