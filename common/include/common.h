@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#include <array>
+
 #include "logger.h"
 
 inline uint32_t add_two_uints(uint32_t a, uint32_t b) { return a + b; }
@@ -17,6 +19,7 @@ struct SizedText {
         for (uint16_t i = 0; i < size; i++) {
             text_.at(i) = '\0';
         }
+        actualSize = 0;
     }
 
     SizedText(const char* s) {
