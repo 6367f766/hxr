@@ -117,11 +117,9 @@ class Hexer : public Config {
 
         for (uint8_t i = 0; i < Config::size; i++) {
             std::ostringstream tmp;
-            std::bitset<4> firstByte{unsigned((*startAddr >> 4) & 0xff)};
-            tmp << firstByte;
-            std::bitset<4> lastByte{unsigned(*startAddr & 0xff)};
-            tmp << lastByte;
-
+            // Remnants of byte splitting, if needed see blame for this comment
+            std::bitset<8> byte{unsigned(*startAddr)};
+            tmp << byte;
             sentence.add(Word{tmp.str()});
 
             startAddr++;
@@ -160,9 +158,8 @@ class Hexer : public Config {
             }
 
             std::ostringstream tmp;
-            std::bitset<4> firstByte{unsigned((*startAddr >> 4) & 0xff)};
-            std::bitset<4> lastByte{unsigned(*startAddr & 0xff)};
-            tmp << firstByte << lastByte;
+            std::bitset<8> byte{unsigned(*startAddr)};
+            tmp << byte;
             sentence3.add(Word{tmp.str()});
 
             counter++;
