@@ -7,8 +7,7 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_CXX_FLAGS_DEBUG": "-O1 -g",
-                "DEV_HARDWARE": {"type": "bool", "value": "ON"},
-                "CMAKE_COMPILE_WARNING_AS_ERROR": "OFF"
+                "BUILD_UNIT_TESTS": true
             }
         },
         {
