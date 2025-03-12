@@ -59,15 +59,15 @@ class BetterVisual:
 @pytest.mark.parametrize("test_input,expected",
                          [
                              (["query", "-d", "-100"], BetterVisual("-9c-ff-ff-ff-",
-                              ["1   ", "3\t\t", "1\t\t\n"]).get()),
-                             (["query", "-bu", "100"], BetterVisual("-64-00-00-00-0110 0100----",
-                              ["1   ", "3\t\t", "1\t\t\n", "3\t0000 0000", "1\t\n"]).get()),
+                              ["1", "3\t\t", "1\n"]).get()),
+                             (["query", "-bu", "100"], BetterVisual("-64-00-00-00-01100100----",
+                              ["1", "3\t\t", "1\n", "3\t00000000", "1\n"]).get()),
                              (["query", "-x", "ff"],
                               BetterVisual("-255-", ["1", "1\n"]).get()),
-                             (["query", "-xb", "ff"], BetterVisual("-255-1111 1111----",
-                              ["1", "1\n", "3\t0000 0000", "1\t\n"]).get()),
-                             (["query", "-t", "hello"], BetterVisual("-h-e-l-l-o-68-65-6c-6c-6f-0110 1000-0110 0101-0110 1100-0110 1100-0110 1111-", [
-                              "1", "4\t\t", "1\t\t\n", "4\t\t", "1\t\t\n", "4\t", "1\t\n"]).get()),
+                             (["query", "-xb", "ff"], BetterVisual("-255-11111111----",
+                              ["1", "1\n", "3\t00000000", "1\n"]).get()),
+                             (["query", "-t", "hello"], BetterVisual("-h-e-l-l-o-68-65-6c-6c-6f-01101000-01100101-01101100-01101100-01101111-", [
+                              "1", "4\t\t", "1\n", "4\t\t", "1\n", "4\t", "1\n"]).get()),
                          ])
 def test_cli_default(test_input, expected):
     result = run_command("build_outputs/release/main/main", *test_input).stdout
