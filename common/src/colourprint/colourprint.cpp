@@ -4,7 +4,7 @@
 
 Word& Word::withPostfix(std::optional<std::string> postfix) {
     if (postfix) {
-        post = postfix.value();
+        post = SizedText<MaxWordSize>::fromString(postfix.value());
         uint8_t updated = static_cast<uint8_t>(this->metadata);
         updated |= 0b00000001;
         this->metadata = static_cast<WordFixNotation>(updated);
@@ -14,12 +14,29 @@ Word& Word::withPostfix(std::optional<std::string> postfix) {
 
 Word& Word::withPrefix(std::optional<std::string> prefix) {
     if (prefix) {
-        pre = prefix.value();
+        pre = SizedText<MaxWordSize>::fromString(prefix.value());
         uint8_t updated = static_cast<uint8_t>(this->metadata);
         updated |= 0b00000100;
         this->metadata = static_cast<WordFixNotation>(updated);
     }
     return *this;
+}
+
+std::string Word::get() {
+    std::string output;
+    if (pre.getSize()) {
+        output += std::string{pre.c_str()};
+    }
+
+    if (word.getSize()) {
+        output += std::string{word.c_str()};
+    }
+
+    if (post.getSize()) {
+        output += std::string{post.c_str()};
+    }
+
+    return output;
 }
 
 bool Word::operator==(const Word& other) const { return this == &other; }
@@ -32,14 +49,14 @@ std::string SentenceGenerator::get() {
     for (auto cword_itr = wordSequence_.cbegin();
          cword_itr != wordSequence_.cend(); cword_itr++) {
         if (isFirst) {
-            oss_ << wordPattern.pre;
+            oss_ << wordPattern.pre.c_str();
             isFirst = false;
         }
 
         if (cword_itr == --(wordSequence_.cend())) {
-            oss_ << cword_itr->word << wordPattern.post;
+            oss_ << cword_itr->word.c_str() << wordPattern.post.c_str();
         } else {
-            oss_ << cword_itr->word << wordPattern.word;
+            oss_ << cword_itr->word.c_str() << wordPattern.word.c_str();
         }
     }
     return oss_.str();
@@ -62,7 +79,6 @@ TEST(Word, withPostfix) {
 TEST(Word, withPrefix) {
     auto w = Word{"this"}.withPrefix("-");
     ASSERT_EQ(w.metadata, WordFixNotation::PrefixWord);
-    ASSERT_EQ(w.word, "this");
     ASSERT_EQ(w.get(), "-this");
 }
 

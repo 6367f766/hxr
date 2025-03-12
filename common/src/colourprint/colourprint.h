@@ -6,6 +6,10 @@
 #include <string>
 #include <vector>
 
+#include "common.h"
+
+static constexpr uint32_t MaxWordSize = 15;
+
 /** @enum WordFixNotation
  *
  *  @brief The smallest unit is a word. A word comes with a "prefix" and a
@@ -35,12 +39,13 @@ enum class WordFixNotation : uint8_t {
  *
  */
 struct Word {
-    std::string pre{};
-    std::string word{};
-    std::string post{};
+    SizedText<MaxWordSize> pre;
+    SizedText<MaxWordSize> word;
+    SizedText<MaxWordSize> post;
     WordFixNotation metadata{WordFixNotation::OnlyWord};
 
-    explicit Word(std::string word) : word{word} {};
+    explicit Word(std::string word)
+        : word{SizedText<MaxWordSize>::fromString(word)} {};
 
     /**
      * @brief add postfix to current Word. Will change metadata accordingly
@@ -63,8 +68,7 @@ struct Word {
      * @return this
      */
     Word& withPrefix(std::optional<std::string> prefix);
-
-    std::string get() { return pre + word + post; }
+    std::string get();
 
     bool operator==(const Word& other) const;
 };
