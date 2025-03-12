@@ -81,9 +81,22 @@ class SentenceGenerator {
     Word wordPattern;
 
    public:
+    /**
+     * @brief Initialise with a `wordPattern` - a data member that describes
+     * what do pre-sentence pattern, the intra-word pattern and post sentence
+     * pattern.
+     *
+     * That is, for a normal sentence Word{" "}.withPostfix("\n")
+     *
+     * This would add spaces between words in `wordSequence_` and a new line
+     * character at the end. NOTE: there is no pre-fix in the example above.
+     *
+     * @param wordPattern
+     */
     SentenceGenerator(Word wordPattern) : wordPattern{wordPattern} {}
 
     void add(Word&& word);
+
     std::string get();
 };
 
