@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <iostream>
 #include <mutex>
+#include <sstream>
 
 namespace common {
 enum class Severity : uint8_t {

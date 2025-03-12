@@ -15,7 +15,8 @@
             "name": "release",
             "binaryDir": "${sourceDir}/build_outputs/release",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
+                "CMAKE_BUILD_TYPE": "Release",
+                "BUILD_UNIT_TESTS": true
             }
         },
         {
