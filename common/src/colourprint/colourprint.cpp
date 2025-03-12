@@ -62,8 +62,7 @@ std::string SentenceGenerator::get() {
     return oss_.str();
 }
 
-template <size_t N>
-std::optional<std::string> SentenceGenerator::getNext() {
+std::optional<std::string> SentenceGenerator::getNext(size_t N) {
     oss_.str("");
 
     if (firstGetNext_) {
@@ -149,10 +148,10 @@ TEST(SentenceGenerator, nextN) {
     sentence.add(Word{"l"});
     sentence.add(Word{"o"});
 
-    auto result = sentence.getNext<8>();
+    auto result = sentence.getNext(8);
     ASSERT_EQ(result.value(), "h e l l o");
 
-    result = sentence.getNext<8>();
+    result = sentence.getNext(8);
     ASSERT_FALSE(result.has_value());
 }
 

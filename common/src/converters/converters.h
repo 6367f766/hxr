@@ -76,7 +76,7 @@ class Hexer : public Config {
     std::ostringstream ss_;
 
     bool multilineOutputSplit(SentenceGenerator& sentence) {
-        auto sentence_output = sentence.getNext<8>();
+        auto sentence_output = sentence.getNext(8);
         if (sentence_output.has_value()) {
             LOG_V() << sentence_output.value() << "???";
             ss_ << sentence_output.value();

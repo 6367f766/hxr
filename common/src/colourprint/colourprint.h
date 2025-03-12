@@ -112,8 +112,7 @@ class SentenceGenerator {
      *
      * @return std::nullopt when we are out of `Words`
      */
-    template <size_t N>
-    std::optional<std::string> getNext();
+    std::optional<std::string> getNext(size_t N);
 };
 
 #endif
