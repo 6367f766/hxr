@@ -6,7 +6,7 @@
 #include <sstream>
 #include <type_traits>
 
-#include "colourprint.cpp"  // XXX: HELP WHY
+#include "colourprint.h"
 #include "common.h"
 #include "logger.h"
 

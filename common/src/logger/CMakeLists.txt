@@ -6,7 +6,8 @@ if(CMAKE_CROSSCOMPILING)
     add_compile_definitions(CROSS_COMPILING)
 endif()
 
-add_library(${PROJECT_NAME} INTERFACE ${SourceFiles})
+file(GLOB SourceFiles *.h *.cpp)
+add_library(${PROJECT_NAME} STATIC ${SourceFiles})
 
 #target_link_libraries(${PROJECT_NAME} INTERFACE common_include)
 
