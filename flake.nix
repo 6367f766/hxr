@@ -18,7 +18,7 @@
       src = pkgs.fetchgit {
         url = "https://github.com/6367f766/hxr.git"; 
         rev = "refs/tags/v0.1-alpha";
-        sha256 = "EOsxQLU2NoDc10Hpd4jsIoLrDkOcCaMzAY3zpJHTnLI=";
+        sha256 = "j+uOQ63cXcsEx9SC0Q9auM7eqvyiZsHVIswcl65rSqc=";
         fetchSubmodules = true;
       };
 
