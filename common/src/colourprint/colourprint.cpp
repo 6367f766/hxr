@@ -64,22 +64,26 @@ std::string SentenceGenerator::get() {
 
 std::optional<std::string> SentenceGenerator::getNext(size_t N) {
     oss_.str("");
+    size_t minSize = std::min(N, wordSequence_.size());
 
     if (firstGetNext_) {
         itr_ = wordSequence_.begin();
         firstGetNext_ = false;
     }
 
-    size_t minSize = std::min(N, wordSequence_.size());
     LOG_V() << "Minimum size is " << minSize;
 
     bool isFirst = true;
     for (uint32_t i = 0; i < minSize; i++) {
-        if ((itr_ == --(wordSequence_.end())) || i == (minSize - 1)) {
-            oss_ << itr_->word.c_str() << wordPattern.post.c_str();
-            itr_++;
+        if (itr_ >= wordSequence_.end()) {
             break;
-        } else if (itr_ >= wordSequence_.end()) {
+        } else if ((itr_ == --(wordSequence_.end())) || i == (minSize - 1)) {
+            oss_ << itr_->word.c_str() << wordPattern.post.c_str();
+            if (minSize == 1) {
+                itr_ = wordSequence_.end();
+            } else {
+                itr_++;
+            }
             break;
         } else {
             if (isFirst) {
@@ -138,6 +142,27 @@ TEST(SentenceGenerator, sentenceWithWordFix) {
     sentence_generator.add(Word{"separated"});
     ASSERT_EQ(sentence_generator.get(),
               "<S>text\tis\tbetween\tS\tand\tE\tand\ttab\tseparated<E>");
+}
+
+TEST(SentenceGenerator, nextNwhenNone) {
+    auto sentence = SentenceGenerator{Word{" "}};
+
+    auto result = sentence.getNext(8);
+    ASSERT_FALSE(result.has_value());
+
+    result = sentence.getNext(8);
+    ASSERT_FALSE(result.has_value());
+}
+
+TEST(SentenceGenerator, nextNwhenOne) {
+    auto sentence = SentenceGenerator{Word{" "}};
+    sentence.add(Word{"h"});
+
+    auto result = sentence.getNext(8);
+    ASSERT_EQ(result.value(), "h");
+
+    result = sentence.getNext(8);
+    ASSERT_FALSE(result.has_value());
 }
 
 TEST(SentenceGenerator, nextN) {
