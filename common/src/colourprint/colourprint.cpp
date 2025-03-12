@@ -62,6 +62,43 @@ std::string SentenceGenerator::get() {
     return oss_.str();
 }
 
+template <size_t N>
+std::optional<std::string> SentenceGenerator::getNext() {
+    oss_.str("");
+
+    if (firstGetNext_) {
+        itr_ = wordSequence_.begin();
+        firstGetNext_ = false;
+    }
+
+    size_t minSize = std::min(N, wordSequence_.size());
+    LOG_V() << "Minimum size is " << minSize;
+
+    bool isFirst = true;
+    for (uint32_t i = 0; i < minSize; i++) {
+        if ((itr_ == --(wordSequence_.end())) || i == (minSize - 1)) {
+            oss_ << itr_->word.c_str() << wordPattern.post.c_str();
+            itr_++;
+            break;
+        } else if (itr_ >= wordSequence_.end()) {
+            break;
+        } else {
+            if (isFirst) {
+                oss_ << wordPattern.pre.c_str();
+                isFirst = false;
+            }
+            oss_ << itr_->word.c_str() << wordPattern.word.c_str();
+            itr_++;
+        }
+    }
+
+    std::string result = oss_.str();
+    if (result.empty()) {
+        return {};
+    }
+    return result;
+}
+
 #ifdef UNIT_TEST
 #include <gtest/gtest.h>
 
@@ -83,9 +120,7 @@ TEST(Word, withPrefix) {
 }
 
 TEST(Word, all) {
-    auto w = Word{"this"}
-                 .withPrefix("a prefix ")
-                 .withPostfix(" Some post fix");
+    auto w = Word{"this"}.withPrefix("a prefix ").withPostfix(" Some post fix");
     ASSERT_EQ(w.metadata, WordFixNotation::All);
     ASSERT_EQ(w.get(), "a prefix this Some post fix");
 }
@@ -104,6 +139,21 @@ TEST(SentenceGenerator, sentenceWithWordFix) {
     sentence_generator.add(Word{"separated"});
     ASSERT_EQ(sentence_generator.get(),
               "<S>text\tis\tbetween\tS\tand\tE\tand\ttab\tseparated<E>");
+}
+
+TEST(SentenceGenerator, nextN) {
+    auto sentence = SentenceGenerator{Word{" "}};
+    sentence.add(Word{"h"});
+    sentence.add(Word{"e"});
+    sentence.add(Word{"l"});
+    sentence.add(Word{"l"});
+    sentence.add(Word{"o"});
+
+    auto result = sentence.getNext<8>();
+    ASSERT_EQ(result.value(), "h e l l o");
+
+    result = sentence.getNext<8>();
+    ASSERT_FALSE(result.has_value());
 }
 
 #endif

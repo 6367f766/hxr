@@ -11,6 +11,7 @@ target_link_libraries(${PROJECT_NAME}
     common_include
     converters
     logger
+    colourprint
 )
 
 add_test(

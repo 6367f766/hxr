@@ -6,6 +6,7 @@
 #include <sstream>
 #include <type_traits>
 
+#include "colourprint.cpp"  // XXX: HELP WHY
 #include "common.h"
 #include "logger.h"
 
@@ -74,58 +75,66 @@ class Hexer : public Config {
     T& valueRef_;
     std::ostringstream ss_;
 
-    void trackCounter(uint8_t& ref, std::ostringstream& lineRef,
-                      bool isLast = false) {
-        if (ref == 8) {
-            ss_ << lineRef.str();
-            ss_ << std::endl;
-            lineRef.str("");
-
-            if (isLast) {
-                ref = 0;
-                ss_ << std::endl;
-            }
+    bool multilineOutputSplit(SentenceGenerator& sentence) {
+        auto sentence_output = sentence.getNext<8>();
+        if (sentence_output.has_value()) {
+            LOG_V() << sentence_output.value() << "???";
+            ss_ << sentence_output.value();
+            return true;
         }
+        return false;
     }
 
    public:
     void toHex() {
         uint8_t* startAddr = reinterpret_cast<uint8_t*>(&valueRef_);
-        ss_ << "   ";
+        auto sentence = SentenceGenerator{Word{"\t\t"}.withPostfix("\n")};
 
         uint8_t tabCounter = 0;
         for (uint8_t i = 0; i < Config::size; i++) {
-            ss_ << std::setfill('0') << std::setw(2) << std::hex
-                << unsigned(*startAddr) << "\t\t";
+            {
+                // XXX: would be nice to simplify this
+                std::ostringstream tmp;
+                tmp << std::setfill('0') << std::setw(2) << std::hex
+                    << unsigned(*startAddr);
+                sentence.add(Word{tmp.str()});
+            }
             startAddr++;
             tabCounter++;
             if (tabCounter == 10) {
-                ss_ << std::endl;
+                /// XXX: need to absorb counting tabs into sentenceGenerator
+                sentence.add(Word{"\n"});
                 tabCounter = 0;
             }
         }
-
-        ss_ << std::endl;
+        ss_ << sentence.get();
     }
 
     void toBin(std::string_view newline = "\n") {
         uint8_t* startAddr = reinterpret_cast<uint8_t*>(&valueRef_);
         uint8_t tabCounter = 0;
+        auto sentence = SentenceGenerator{Word{"\t"}.withPostfix("\n")};
+
         for (uint8_t i = 0; i < Config::size; i++) {
+            std::ostringstream tmp;
             std::bitset<4> firstByte{unsigned((*startAddr >> 4) & 0xff)};
-            ss_ << firstByte << " ";
+            tmp << firstByte;
             std::bitset<4> lastByte{unsigned(*startAddr & 0xff)};
-            ss_ << lastByte;
-            //  std::cout << " " << (byte & ~0xFF);
-            ss_ << "\t";
+            tmp << lastByte;
+
+            sentence.add(Word{tmp.str()});
+
             startAddr++;
             tabCounter++;
             if (tabCounter == 10) {
-                ss_ << std::endl;
+                sentence.add(Word{"\n"});
                 tabCounter = 0;
             }
         }
-        ss_ << newline;
+        // XXX: Note newline = " " was used show bytes in same line before.
+        // rethink this...
+        // ss_ << newline;
+        ss_ << sentence.get();
     }
 
     void showString(char* data, uint32_t maxSize,
@@ -134,36 +143,43 @@ class Hexer : public Config {
         uint8_t* startAddr = reinterpret_cast<uint8_t*>(data);
         uint8_t counter = 0;
 
-        std::ostringstream line1;
-        std::ostringstream line2;
-        std::ostringstream line3;
-        for (uint32_t i = 0; i < maxSize * sizeof(char); i++) {
-            line1 << (char)*startAddr << "\t\t";
+        auto sentence1 = SentenceGenerator{Word{"\t\t"}.withPostfix("\n")};
+        auto sentence2 = SentenceGenerator{Word{"\t\t"}.withPostfix("\n")};
+        auto sentence3 = SentenceGenerator{Word{"\t"}.withPostfix("\n")};
 
-            line2 << std::setfill('0') << std::setw(2) << std::hex
-                  << unsigned(*startAddr) << "\t\t";
+        LOG_V() << "Max size: " << maxSize;
+        for (uint32_t i = 0; i < maxSize; i++) {
+            sentence1.add(Word{std::string{(char)*startAddr}});
 
+            {
+                // XXX: would be nice to simplify this
+                std::ostringstream tmp;
+                tmp << std::setfill('0') << std::setw(2) << std::hex
+                    << unsigned(*startAddr);
+                sentence2.add(Word{tmp.str()});
+            }
+
+            std::ostringstream tmp;
             std::bitset<4> firstByte{unsigned((*startAddr >> 4) & 0xff)};
             std::bitset<4> lastByte{unsigned(*startAddr & 0xff)};
-            line3 << firstByte << " " << lastByte << "\t";
+            tmp << firstByte << lastByte;
+            sentence3.add(Word{tmp.str()});
 
             counter++;
             startAddr++;
-
-            trackCounter(counter, line1);
-            trackCounter(counter, line2);
-            trackCounter(counter, line3, true);
         }
-        ss_ << line1.str() << newline;
-        ss_ << line2.str() << newline;
-        ss_ << line3.str() << newline;
+
+        bool res = multilineOutputSplit(sentence1);
+        while (res) {
+            multilineOutputSplit(sentence2);
+            multilineOutputSplit(sentence3);
+            res = multilineOutputSplit(sentence1);
+        };
     }
 
     Hexer(T& value) : valueRef_(value), Config{0} {};
 
-    void setConfig(Config config) {
-        Config::setConfig(config);
-    }
+    void setConfig(Config config) { Config::setConfig(config); }
 
     void run() {
         LOG_V() << "Running main...";

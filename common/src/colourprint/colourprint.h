@@ -83,6 +83,8 @@ class SentenceGenerator {
     std::ostringstream oss_{};
 
     Word wordPattern;
+    std::vector<Word>::iterator itr_{};
+    bool firstGetNext_{true};
 
    public:
     /**
@@ -97,11 +99,21 @@ class SentenceGenerator {
      *
      * @param wordPattern
      */
-    SentenceGenerator(Word wordPattern) : wordPattern{wordPattern} {}
+    SentenceGenerator(Word wordPattern) : wordPattern{wordPattern} {
+        itr_ = wordSequence_.begin();
+    }
 
     void add(Word&& word);
 
     std::string get();
+
+    /**
+     * @brief get the `N` next elements from the vector of `Word`(s).
+     *
+     * @return std::nullopt when we are out of `Words`
+     */
+    template <size_t N>
+    std::optional<std::string> getNext();
 };
 
 #endif

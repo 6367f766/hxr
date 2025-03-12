@@ -1,11 +1,11 @@
 project(colourprint)
 
 file(GLOB SourceFiles *.h *.cpp)
-add_library(${PROJECT_NAME} ${SourceFiles})
+add_library(${PROJECT_NAME} INTERFACE ${SourceFiles})
 
 set(Libs common_include)
 
-target_link_libraries(${PROJECT_NAME} ${Libs})
+target_link_libraries(${PROJECT_NAME} INTERFACE ${Libs})
 
 # Export include files
 target_include_directories(${PROJECT_NAME} INTERFACE

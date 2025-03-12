@@ -6,7 +6,7 @@ endif()
 
 add_library(${PROJECT_NAME} INTERFACE)
 
-#target_link_libraries(${PROJECT_NAME} INTERFACE common_include)
+target_link_libraries(${PROJECT_NAME} INTERFACE common_include colourprint)
 
 # Export include files
 target_include_directories(${PROJECT_NAME} INTERFACE
