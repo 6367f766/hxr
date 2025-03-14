@@ -5,5 +5,6 @@ var searchData=
   ['main_2ecpp_2',['main.cpp',['../main_8cpp.html',1,'']]],
   ['maxwordsize_3',['MaxWordSize',['../colourprint_8h.html#aff05afc18516deb72b1c017721ce5fdc',1,'colourprint.h']]],
   ['metadata_4',['metadata',['../structWord.html#a364439fc459db1dc8bc6bf829306cf9a',1,'Word']]],
-  ['multilineoutputsplit_5',['multilineOutputSplit',['../classconverters_1_1Hexer.html#a647c83fad4b1b3bee73c11cac34dd4dc',1,'converters::Hexer']]]
+  ['metadata_5f_5',['metadata_',['../classBinFileRead.html#ac52d30293b769f9e4a23f65110e26a37',1,'BinFileRead']]],
+  ['multilineoutputsplit_6',['multilineOutputSplit',['../classconverters_1_1Hexer.html#a8b5b80f1a34b274fc39923b096b82b09',1,'converters::Hexer']]]
 ];

@@ -112,17 +112,29 @@ $(function(){initNavTree('classBinFileRead.html',''); initResizable(true); });
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="bin__file__read_8h_source.html">bin_file_read.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for BinFileRead:</div>
+<div class="dyncontent">
+<div class="center"><img src="classBinFileRead__coll__graph.png" border="0" usemap="#aBinFileRead_coll__map" alt="Collaboration graph"/></div>
+<map name="aBinFileRead_coll__map" id="aBinFileRead_coll__map">
+<area shape="rect" title=" " alt="" coords="59,94,150,120"/>
+<area shape="rect" href="structconverters_1_1ArgumentMetadata.html" title="Contains information on arguments size will contain the following bit options: TODO: maybe make this ..." alt="" coords="5,5,204,31"/>
+<area shape="poly" title=" " alt="" coords="107,47,107,94,102,94,102,47"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5e3c0e06964799e4d0e2a6ba27da6bc5" id="r_a5e3c0e06964799e4d0e2a6ba27da6bc5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e3c0e06964799e4d0e2a6ba27da6bc5">BinFileRead</a> (const std::string_view filename)</td></tr>
-<tr class="separator:a5e3c0e06964799e4d0e2a6ba27da6bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa695d8224e26f3e5f297dce101a7222f" id="r_aa695d8224e26f3e5f297dce101a7222f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa695d8224e26f3e5f297dce101a7222f">BinFileRead</a> (const std::string_view filename, bool showBinary)</td></tr>
+<tr class="separator:aa695d8224e26f3e5f297dce101a7222f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7dc1a05f04127afe8caaa7344931da20" id="r_a7dc1a05f04127afe8caaa7344931da20"><td class="memTemplParams" colspan="2">template&lt;class T&gt; </td></tr>
 <tr class="memitem:a7dc1a05f04127afe8caaa7344931da20"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7dc1a05f04127afe8caaa7344931da20">run</a> ()</td></tr>
 <tr class="separator:a7dc1a05f04127afe8caaa7344931da20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a881d8e6c1c8c585cc0bdbb15c7d18fee" id="r_a881d8e6c1c8c585cc0bdbb15c7d18fee"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a881d8e6c1c8c585cc0bdbb15c7d18fee">read_binary_as_char</a> () -&gt; void</td></tr>
+<tr class="separator:a881d8e6c1c8c585cc0bdbb15c7d18fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af34dc5a4dcb2008be8f172f08e3d2f93" id="r_af34dc5a4dcb2008be8f172f08e3d2f93"><td class="memTemplParams" colspan="2">template&lt;class T&gt; </td></tr>
 <tr class="memitem:af34dc5a4dcb2008be8f172f08e3d2f93"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af34dc5a4dcb2008be8f172f08e3d2f93">read_binary</a> () -&gt; void</td></tr>
 <tr class="separator:af34dc5a4dcb2008be8f172f08e3d2f93"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,10 +143,14 @@ Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ae0586c845c1eeb71f62a3a781b07d6e0" id="r_ae0586c845c1eeb71f62a3a781b07d6e0"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0586c845c1eeb71f62a3a781b07d6e0">filename_</a></td></tr>
 <tr class="separator:ae0586c845c1eeb71f62a3a781b07d6e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac52d30293b769f9e4a23f65110e26a37" id="r_ac52d30293b769f9e4a23f65110e26a37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structconverters_1_1ArgumentMetadata.html">converters::ArgumentMetadata</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac52d30293b769f9e4a23f65110e26a37">metadata_</a> {0}</td></tr>
+<tr class="separator:ac52d30293b769f9e4a23f65110e26a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa28c1194f726512bf45ed8729de3eda6" id="r_aa28c1194f726512bf45ed8729de3eda6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa28c1194f726512bf45ed8729de3eda6">showBinary_</a></td></tr>
+<tr class="separator:aa28c1194f726512bf45ed8729de3eda6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5e3c0e06964799e4d0e2a6ba27da6bc5" name="a5e3c0e06964799e4d0e2a6ba27da6bc5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e3c0e06964799e4d0e2a6ba27da6bc5">&#9670;&#160;</a></span>BinFileRead()</h2>
+<a id="aa695d8224e26f3e5f297dce101a7222f" name="aa695d8224e26f3e5f297dce101a7222f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa695d8224e26f3e5f297dce101a7222f">&#9670;&#160;</a></span>BinFileRead()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -145,8 +161,12 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">BinFileRead::BinFileRead </td>
           <td>(</td>
-          <td class="paramtype">const std::string_view</td>          <td class="paramname"><span class="paramname"><em>filename</em></span></td><td>)</td>
+          <td class="paramtype">const std::string_view</td>          <td class="paramname"><span class="paramname"><em>filename</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>showBinary</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -185,6 +205,31 @@ template&lt;class T&gt; </div>
 </div><div class="memdoc">
 <p>XXX: would be nice to not use std::cout here</p>
 <p>XXX: would be nice to not use std::cout here</p>
+
+</div>
+</div>
+<a id="a881d8e6c1c8c585cc0bdbb15c7d18fee" name="a881d8e6c1c8c585cc0bdbb15c7d18fee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a881d8e6c1c8c585cc0bdbb15c7d18fee">&#9670;&#160;</a></span>read_binary_as_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto BinFileRead::read_binary_as_char </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> -&gt; void </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -227,6 +272,50 @@ template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::string_view BinFileRead::filename_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac52d30293b769f9e4a23f65110e26a37" name="ac52d30293b769f9e4a23f65110e26a37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac52d30293b769f9e4a23f65110e26a37">&#9670;&#160;</a></span>metadata_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structconverters_1_1ArgumentMetadata.html">converters::ArgumentMetadata</a> BinFileRead::metadata_ {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa28c1194f726512bf45ed8729de3eda6" name="aa28c1194f726512bf45ed8729de3eda6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa28c1194f726512bf45ed8729de3eda6">&#9670;&#160;</a></span>showBinary_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BinFileRead::showBinary_</td>
         </tr>
       </table>
   </td>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['binfileread_0',['BinFileRead',['../classBinFileRead.html#a5e3c0e06964799e4d0e2a6ba27da6bc5',1,'BinFileRead']]]
+  ['binfileread_0',['BinFileRead',['../classBinFileRead.html#aa695d8224e26f3e5f297dce101a7222f',1,'BinFileRead']]]
 ];

@@ -136,9 +136,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5149d8943e2b8f8d2dc60172e2234f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74b513a1a781f2ca8f582b99196468e6" id="r_a74b513a1a781f2ca8f582b99196468e6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74b513a1a781f2ca8f582b99196468e6">get</a> ()</td></tr>
 <tr class="separator:a74b513a1a781f2ca8f582b99196468e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae39116b96ecbaa1ec7d1783e902cc968" id="r_ae39116b96ecbaa1ec7d1783e902cc968"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae39116b96ecbaa1ec7d1783e902cc968">getNext</a> (size_t N)</td></tr>
-<tr class="memdesc:ae39116b96ecbaa1ec7d1783e902cc968"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the <code>N</code> next elements from the vector of <code><a class="el" href="structWord.html" title="A word is, well, a std::string with no spaces (hopefully), but relaxed to be whatever the user consid...">Word</a></code>(s).  <br /></td></tr>
-<tr class="separator:ae39116b96ecbaa1ec7d1783e902cc968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab390c7631d6617a1a605533f0612061e" id="r_ab390c7631d6617a1a605533f0612061e"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab390c7631d6617a1a605533f0612061e">getNext</a> (size_t N, bool pad=false)</td></tr>
+<tr class="memdesc:ab390c7631d6617a1a605533f0612061e"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the <code>N</code> next elements from the vector of <code><a class="el" href="structWord.html" title="A word is, well, a std::string with no spaces (hopefully), but relaxed to be whatever the user consid...">Word</a></code>(s).  <br /></td></tr>
+<tr class="separator:ab390c7631d6617a1a605533f0612061e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -226,8 +226,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae39116b96ecbaa1ec7d1783e902cc968" name="ae39116b96ecbaa1ec7d1783e902cc968"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae39116b96ecbaa1ec7d1783e902cc968">&#9670;&#160;</a></span>getNext()</h2>
+<a id="ab390c7631d6617a1a605533f0612061e" name="ab390c7631d6617a1a605533f0612061e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab390c7631d6617a1a605533f0612061e">&#9670;&#160;</a></span>getNext()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,13 +235,23 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">std::optional&lt; std::string &gt; SentenceGenerator::getNext </td>
           <td>(</td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>N</em></span></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>N</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>pad</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>get the <code>N</code> next elements from the vector of <code><a class="el" href="structWord.html" title="A word is, well, a std::string with no spaces (hopefully), but relaxed to be whatever the user consid...">Word</a></code>(s). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pad</td><td>add this to pad TODO: need to add pad pattern </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>std::nullopt when we are out of <code>Words</code> </dd></dl>
 
 </div>
