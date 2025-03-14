@@ -66,10 +66,9 @@ class BetterVisual:
                               BetterVisual("-255-", ["1", "1\n"]).get()),
                              (["query", "-xb", "ff"], BetterVisual("-255-11111111----",
                               ["1", "1\n", "3\t00000000", "1\n"]).get()),
-                             (["query", "-t", "hello"], BetterVisual("-h-e-l-l-o-68-65-6c-6c-6f-01101000-01100101-01101100-01101100-01101111-", [
-                              "1", "4\t\t", "1\n", "4\t\t", "1\n", "4\t", "1\n"]).get()),
+                             (["query", "-t", "hello full line up to here??????"], BetterVisual("-68-65-6c-6c-6f-20-66-75-6c-6c-20-6c-69-6e-65-20-75-70-20-74-6f-20-68-65-72-65-3f-3f-3f-3f-3f-3f--|hello-full-line-up-to-here??????\n", [
+                              "1", "32 ", "1\t", "5 ", "1\n"]).get()),
                          ])
 def test_cli_default(test_input, expected):
-    result = run_command("build_outputs/release/main/main", *test_input).stdout
     assert run_command("build_outputs/release/main/main",
                        *test_input).stdout == expected
