@@ -45,11 +45,14 @@ int main(int argc, char** argv) {
         .flag();
 
     evaluate_command.add_argument("--file");
+    evaluate_command.add_argument("-b")
+        .help("show binary. If not, show hex")
+        .flag();
     evaluate_command.add_argument("--type")
         .help(
             "The type to parse. Note, this is a single type. Supported types "
-            "are: u32, i32, b[ool], f32(but it's broken!)")
-        .default_value("u32");
+            "are: u32, i32, c[har], f32(but it's broken!)")
+        .default_value("c");
 
     program.add_subparser(query_command);
     program.add_subparser(evaluate_command);
@@ -95,8 +98,12 @@ int main(int argc, char** argv) {
 
         if (evaluate_command.is_used("--file")) {
             auto filename = evaluate_command.get<std::string>("file");
+            auto showBinFile = evaluate_command.get<bool>("-b");
             LOG_D() << "file present: " << filename;
-            BinFileRead bfr{filename};
+            LOG_D() << "show bin file: " << showBinFile;
+
+            BinFileRead bfr{filename, showBinFile};
+
             auto type_argument = evaluate_command.get<std::string>("type");
             if (type_argument.find("u32") != std::string::npos) {
                 bfr.run<uint32_t>();
@@ -113,8 +120,8 @@ int main(int argc, char** argv) {
                 return 0;
             }
 
-            if (type_argument.find("b") != std::string::npos) {
-                bfr.run<bool>();
+            if (type_argument.find("c") != std::string::npos) {
+                bfr.run<char>();
                 return 0;
             }
             LOG_B() << "Not implemented for type: " << type_argument;

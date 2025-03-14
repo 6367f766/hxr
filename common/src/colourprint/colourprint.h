@@ -110,9 +110,10 @@ class SentenceGenerator {
     /**
      * @brief get the `N` next elements from the vector of `Word`(s).
      *
+     * @param pad add this to pad TODO: need to add pad pattern
      * @return std::nullopt when we are out of `Words`
      */
-    std::optional<std::string> getNext(size_t N);
+    std::optional<std::string> getNext(size_t N, bool pad = false);
 };
 
 #endif

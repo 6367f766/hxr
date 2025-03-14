@@ -62,23 +62,34 @@ std::string SentenceGenerator::get() {
     return oss_.str();
 }
 
-std::optional<std::string> SentenceGenerator::getNext(size_t N) {
+std::optional<std::string> SentenceGenerator::getNext(size_t N, bool pad) {
     oss_.str("");
-    size_t minSize = std::min(N, wordSequence_.size());
-
     if (firstGetNext_) {
         itr_ = wordSequence_.begin();
         firstGetNext_ = false;
     }
 
+    size_t minSize = std::min(
+        N, static_cast<size_t>(std::distance(itr_, wordSequence_.end())));
+
     LOG_V() << "Minimum size is " << minSize;
+    auto padDiff = N - minSize;
 
     bool isFirst = true;
     for (uint32_t i = 0; i < minSize; i++) {
         if (itr_ >= wordSequence_.end()) {
             break;
         } else if ((itr_ == --(wordSequence_.end())) || i == (minSize - 1)) {
-            oss_ << itr_->word.c_str() << wordPattern.post.c_str();
+            oss_ << itr_->word.c_str();
+            if (pad) {
+                oss_ << wordPattern.word.c_str();
+                LOG_V() << "pad triggered for: " << padDiff;
+                for (uint32_t j = 0; j < padDiff; j++) {
+                    oss_ << "  " << wordPattern.word.c_str();
+                }
+            }
+            oss_ << wordPattern.post.c_str();
+            // check if pad and add empty
             if (minSize == 1) {
                 itr_ = wordSequence_.end();
             } else {
