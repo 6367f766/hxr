@@ -75,10 +75,9 @@ class Hexer : public Config {
     T& valueRef_;
     std::ostringstream ss_;
 
-    bool multilineOutputSplit(SentenceGenerator& sentence) {
-        auto sentence_output = sentence.getNext(8);
+    bool multilineOutputSplit(SentenceGenerator& sentence, uint32_t n = 16) {
+        auto sentence_output = sentence.getNext(n, true);
         if (sentence_output.has_value()) {
-            LOG_V() << sentence_output.value() << "???";
             ss_ << sentence_output.value();
             return true;
         }
@@ -137,41 +136,50 @@ class Hexer : public Config {
 
     void showString(char* data, uint32_t maxSize,
                     std::string_view newline = "\n") {
+        ss_.str("");
         LOG_V() << "Showing string...";
         uint8_t* startAddr = reinterpret_cast<uint8_t*>(data);
         uint8_t counter = 0;
 
-        auto sentence1 = SentenceGenerator{Word{"\t\t"}.withPostfix("\n")};
-        auto sentence2 = SentenceGenerator{Word{"\t\t"}.withPostfix("\n")};
-        auto sentence3 = SentenceGenerator{Word{"\t"}.withPostfix("\n")};
+        auto setenceAsText =
+            SentenceGenerator{Word{""}.withPostfix("\n").withPrefix("\t|")};
+        auto sentenceAsHex = SentenceGenerator{Word{" "}};
+        auto sentenceAsBits = SentenceGenerator{Word{" "}};
 
         LOG_V() << "Max size: " << maxSize;
         for (uint32_t i = 0; i < maxSize; i++) {
-            sentence1.add(Word{std::string{(char)*startAddr}});
+            setenceAsText.add(Word{std::string{(char)*startAddr}});
 
             {
                 // XXX: would be nice to simplify this
                 std::ostringstream tmp;
                 tmp << std::setfill('0') << std::setw(2) << std::hex
                     << unsigned(*startAddr);
-                sentence2.add(Word{tmp.str()});
+                sentenceAsHex.add(Word{tmp.str()});
             }
 
             std::ostringstream tmp;
             std::bitset<8> byte{unsigned(*startAddr)};
             tmp << byte;
-            sentence3.add(Word{tmp.str()});
+            sentenceAsBits.add(Word{tmp.str()});
 
             counter++;
             startAddr++;
         }
 
-        bool res = multilineOutputSplit(sentence1);
-        while (res) {
-            multilineOutputSplit(sentence2);
-            multilineOutputSplit(sentence3);
-            res = multilineOutputSplit(sentence1);
-        };
+        if (Config::showBinary) {
+            bool res = multilineOutputSplit(sentenceAsBits);
+            while (res) {
+                multilineOutputSplit(setenceAsText);
+                res = multilineOutputSplit(sentenceAsBits);
+            };
+        } else {
+            bool res = multilineOutputSplit(sentenceAsHex, 32);
+            while (res) {
+                multilineOutputSplit(setenceAsText, 32);
+                res = multilineOutputSplit(sentenceAsHex, 32);
+            };
+        }
     }
 
     Hexer(T& value) : valueRef_(value), Config{0} {};
@@ -194,7 +202,7 @@ class Hexer : public Config {
         if constexpr (std::is_same_v<T, std::string>) {
             LOG_V() << "Value is text";
 
-            SizedText<100> sizedText{valueRef_.c_str()};
+            SizedText<250> sizedText{valueRef_.c_str()};
             showString(const_cast<char*>(sizedText.c_str()),
                        sizedText.getSize());
         } else {
