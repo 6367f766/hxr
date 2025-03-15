@@ -55,6 +55,10 @@ class Logger {
     Logger& log(Severity&& sev) {
         currentSeverity_ = sev;
 
+        if (sev == Severity::BYPASS) {
+            return *this;
+        }
+
         if (currentSeverity_ >= defaultSeverity_) {
             if (!isFirst) {
                 std::cout << "\n";

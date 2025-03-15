@@ -229,16 +229,16 @@ void toHex(T& value) {
     std::cout << std::endl;
 }
 
-void inplace_swap(int* x, int* y) {
-    *y = *x ^ *y;
-    toHex<int>(*y);
-
-    *x = *x ^ *y;
-    toHex<int>(*x);
-
-    *y = *x ^ *y;
-    toHex<int>(*y);
-}
+// void inplace_swap(int* x, int* y) {
+// *y = *x ^ *y;
+// toHex<int>(*y);
+// 
+// *x = *x ^ *y;
+// toHex<int>(*x);
+// 
+// *y = *x ^ *y;
+// toHex<int>(*y);
+// }
 
 #define PRINT_HEX_OF(x, t)                                          \
     {                                                               \

@@ -40,9 +40,8 @@ int main(int argc, char** argv) {
     program.add_subparser(query_command);
 
     auto& evaluate_group = evaluate_command.add_mutually_exclusive_group();
-    evaluate_group.add_argument("--eval")
-        .help("Evaluate an expression. Currently only hex is allowed")
-        .flag();
+    evaluate_group.add_argument("--eval").help(
+        "Evaluate an expression. Currently only uint32 is allowed");
 
     evaluate_command.add_argument("--file");
     evaluate_command.add_argument("-b")
@@ -95,10 +94,10 @@ int main(int argc, char** argv) {
         return 0;
     } else {
         // evaluate
+        auto showBinFile = evaluate_command.get<bool>("-b");
 
         if (evaluate_command.is_used("--file")) {
             auto filename = evaluate_command.get<std::string>("file");
-            auto showBinFile = evaluate_command.get<bool>("-b");
             LOG_D() << "file present: " << filename;
             LOG_D() << "show bin file: " << showBinFile;
 
@@ -129,11 +128,10 @@ int main(int argc, char** argv) {
 
         } else {
             /// XXX: move this to subcommand... Likely the rest too
-            std::cout << "<expression>: ";
-            std::string input;
-            std::getline(std::cin, input);
-            std::cout << "input was: " << input << std::endl;
-            Eval evaluation{input};
+            auto expression = evaluate_command.get("eval");
+            LOG_B() << "<expression>: " << expression << "\n";
+            Eval evaluation{expression, showBinFile};
+            LOG_B() << evaluation.getResult() << "\n";
             return 0;
         }
     }

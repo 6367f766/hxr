@@ -7,6 +7,12 @@
 
 #include "logger.h"
 
+#ifdef UNIT_TEST
+#define GTEST_SEE_INTERNALS public:
+#else
+#define GTEST_SEE_INTERNALS
+#endif
+
 inline uint32_t add_two_uints(uint32_t a, uint32_t b) { return a + b; }
 
 template <uint32_t Size>
