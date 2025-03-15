@@ -1,5 +1,7 @@
 <map id="Eval" name="Eval">
-<area shape="rect" id="Node000001" title="Takes a string expression and evaluates the binary operators." alt="" coords="43,94,89,120"/>
+<area shape="rect" id="Node000001" title="Takes a string expression and evaluates the binary operators." alt="" coords="122,94,168,120"/>
 <area shape="rect" id="Node000002" href="$structSizedText.html" title=" " alt="" coords="5,5,127,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,47,69,94,63,94,63,47"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,44,93,68,123,92,120,96,89,72,73,47"/>
+<area shape="rect" id="Node000003" href="$structOperation.html" title=" " alt="" coords="151,5,296,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="214,46,196,72,167,95,164,91,192,68,209,43"/>
 </map>

@@ -1,16 +1,22 @@
 <map id="common/src/colourprint/colourprint.h" name="common/src/colourprint/colourprint.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="96,5,253,46"/>
-<area shape="rect" id="Node000002" href="$colourprint_8cpp.html" title=" " alt="" coords="5,94,163,135"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,59,106,95,103,92,142,55"/>
-<area shape="rect" id="Node000003" href="$converters_8h.html" title=" " alt="" coords="186,94,344,135"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,55,247,92,243,95,204,59"/>
-<area shape="rect" id="Node000004" href="$bin__file__read_8h.html" title=" " alt="" coords="12,183,170,223"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="213,144,131,185,129,180,211,140"/>
-<area shape="rect" id="Node000005" href="$main_8cpp.html" title=" " alt="" coords="95,271,201,297"/>
-<area shape="poly" id="edge7_Node000003_Node000005" title=" " alt="" coords="246,149,159,272,154,269,241,145"/>
-<area shape="rect" id="Node000006" href="$converters_8cpp.html" title=" " alt="" coords="244,183,402,223"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="289,146,312,181,307,184,284,149"/>
-<area shape="rect" id="Node000007" href="$test__common__include_8cpp.html" title=" " alt="" coords="426,183,651,223"/>
-<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="343,137,477,180,476,185,341,142"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="116,234,141,269,137,272,112,237"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="147,5,304,46"/>
+<area shape="rect" id="Node000002" href="$colourprint_8cpp.html" title=" " alt="" coords="56,94,214,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,59,157,95,154,92,193,55"/>
+<area shape="rect" id="Node000003" href="$converters_8h.html" title=" " alt="" coords="237,94,396,135"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="259,55,298,92,294,95,255,59"/>
+<area shape="rect" id="Node000004" href="$bin__file__read_8h.html" title=" " alt="" coords="5,183,164,223"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="251,143,138,185,136,180,249,138"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html" title=" " alt="" coords="148,279,253,304"/>
+<area shape="poly" id="edge11_Node000003_Node000005" title=" " alt="" coords="268,145,246,163,228,184,216,208,209,234,203,279,198,278,203,233,211,206,224,181,242,159,265,141"/>
+<area shape="rect" id="Node000006" href="$converters_8cpp.html" title=" " alt="" coords="237,183,396,223"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="319,150,319,182,314,182,314,150"/>
+<area shape="rect" id="Node000007" href="$eval_8h.html" title=" " alt="" coords="420,183,578,223"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="373,139,459,180,457,185,370,144"/>
+<area shape="rect" id="Node000009" href="$test__common__include_8cpp.html" title=" " alt="" coords="503,271,727,312"/>
+<area shape="poly" id="edge10_Node000003_Node000009" title=" " alt="" coords="411,126,517,147,562,163,592,181,606,202,614,226,619,270,614,271,609,227,601,204,588,185,560,167,516,153,410,131"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="124,230,186,276,183,281,121,235"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="417,231,243,281,242,276,416,226"/>
+<area shape="rect" id="Node000008" href="$eval_8cpp.html" title=" " alt="" coords="320,271,478,312"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="467,236,424,273,420,269,463,232"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="539,231,591,269,587,273,536,235"/>
 </map>

@@ -354,18 +354,16 @@ $(function(){initNavTree('converters_8h_source.html',''); initResizable(true); }
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>}</div>
 </div>
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
-<div class="foldopen" id="foldopen00232" data-start="{" data-end="}">
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno"><a class="line" href="namespaceconverters.html#a4f0e0f7d234822d5f4f2ff2ad62444f3">  232</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceconverters.html#a4f0e0f7d234822d5f4f2ff2ad62444f3">inplace_swap</a>(<span class="keywordtype">int</span>* x, <span class="keywordtype">int</span>* y) {</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    *y = *x ^ *y;</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <a class="code hl_function" href="namespaceconverters.html#a103e0ac5403dcd456c94dda0fb622393">toHex&lt;int&gt;</a>(*y);</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    *x = *x ^ *y;</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <a class="code hl_function" href="namespaceconverters.html#a103e0ac5403dcd456c94dda0fb622393">toHex&lt;int&gt;</a>(*x);</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    *y = *x ^ *y;</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    <a class="code hl_function" href="namespaceconverters.html#a103e0ac5403dcd456c94dda0fb622393">toHex&lt;int&gt;</a>(*y);</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>}</div>
-</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="comment">// void inplace_swap(int* x, int* y) {</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="comment">// *y = *x ^ *y;</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="comment">// toHex&lt;int&gt;(*y);</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="comment">// </span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment">// *x = *x ^ *y;</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment">// toHex&lt;int&gt;(*x);</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="comment">// </span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="comment">// *y = *x ^ *y;</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="comment">// toHex&lt;int&gt;(*y);</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="comment">// }</span></div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
 <div class="foldopen" id="foldopen00243" data-start="" data-end="">
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno"><a class="line" href="converters_8h.html#ade90975eb40058aa2b2624d2b900bc86">  243</a></span><span class="preprocessor">#define PRINT_HEX_OF(x, t)                                          \</span></div>
@@ -395,12 +393,11 @@ $(function(){initNavTree('converters_8h_source.html',''); initResizable(true); }
 <div class="ttc" id="acolourprint_8h_html"><div class="ttname"><a href="colourprint_8h.html">colourprint.h</a></div></div>
 <div class="ttc" id="acommon_8h_html"><div class="ttname"><a href="common_8h.html">common.h</a></div></div>
 <div class="ttc" id="alogger_8h_html"><div class="ttname"><a href="logger_8h.html">logger.h</a></div></div>
-<div class="ttc" id="alogger_8h_html_a2a875b3ac72842d4a86664a0ea3b6d0a"><div class="ttname"><a href="logger_8h.html#a2a875b3ac72842d4a86664a0ea3b6d0a">LOG_V</a></div><div class="ttdeci">#define LOG_V()</div><div class="ttdef"><b>Definition</b> logger.h:96</div></div>
-<div class="ttc" id="alogger_8h_html_a3d61a587541bf112635283ad55dbef12"><div class="ttname"><a href="logger_8h.html#a3d61a587541bf112635283ad55dbef12">LOG_B</a></div><div class="ttdeci">#define LOG_B()</div><div class="ttdoc">TODO: add module name.</div><div class="ttdef"><b>Definition</b> logger.h:95</div></div>
+<div class="ttc" id="alogger_8h_html_a2a875b3ac72842d4a86664a0ea3b6d0a"><div class="ttname"><a href="logger_8h.html#a2a875b3ac72842d4a86664a0ea3b6d0a">LOG_V</a></div><div class="ttdeci">#define LOG_V()</div><div class="ttdef"><b>Definition</b> logger.h:100</div></div>
+<div class="ttc" id="alogger_8h_html_a3d61a587541bf112635283ad55dbef12"><div class="ttname"><a href="logger_8h.html#a3d61a587541bf112635283ad55dbef12">LOG_B</a></div><div class="ttdeci">#define LOG_B()</div><div class="ttdoc">TODO: add module name.</div><div class="ttdef"><b>Definition</b> logger.h:99</div></div>
 <div class="ttc" id="anamespaceconverters_html"><div class="ttname"><a href="namespaceconverters.html">converters</a></div><div class="ttdef"><b>Definition</b> converters.h:13</div></div>
 <div class="ttc" id="anamespaceconverters_html_a103e0ac5403dcd456c94dda0fb622393"><div class="ttname"><a href="namespaceconverters.html#a103e0ac5403dcd456c94dda0fb622393">converters::toHex</a></div><div class="ttdeci">void toHex(T &amp;value)</div><div class="ttdef"><b>Definition</b> converters.h:222</div></div>
-<div class="ttc" id="anamespaceconverters_html_a4f0e0f7d234822d5f4f2ff2ad62444f3"><div class="ttname"><a href="namespaceconverters.html#a4f0e0f7d234822d5f4f2ff2ad62444f3">converters::inplace_swap</a></div><div class="ttdeci">void inplace_swap(int *x, int *y)</div><div class="ttdef"><b>Definition</b> converters.h:232</div></div>
-<div class="ttc" id="astructSizedText_html"><div class="ttname"><a href="structSizedText.html">SizedText</a></div><div class="ttdef"><b>Definition</b> common.h:13</div></div>
+<div class="ttc" id="astructSizedText_html"><div class="ttname"><a href="structSizedText.html">SizedText</a></div><div class="ttdef"><b>Definition</b> common.h:19</div></div>
 <div class="ttc" id="astructWord_html"><div class="ttname"><a href="structWord.html">Word</a></div><div class="ttdoc">A word is, well, a std::string with no spaces (hopefully), but relaxed to be whatever the user consid...</div><div class="ttdef"><b>Definition</b> colourprint.h:41</div></div>
 <div class="ttc" id="astructWord_html_a91282239a8db4ae501383cdb391049bb"><div class="ttname"><a href="structWord.html#a91282239a8db4ae501383cdb391049bb">Word::withPrefix</a></div><div class="ttdeci">Word &amp; withPrefix(std::optional&lt; std::string &gt; prefix)</div><div class="ttdoc">add prefix to current Word, changing metadata accordingly</div><div class="ttdef"><b>Definition</b> colourprint.cpp:15</div></div>
 <div class="ttc" id="astructWord_html_ad5ffe29e1fdcb3f1896f58a558b4ee03"><div class="ttname"><a href="structWord.html#ad5ffe29e1fdcb3f1896f58a558b4ee03">Word::withPostfix</a></div><div class="ttdeci">Word &amp; withPostfix(std::optional&lt; std::string &gt; postfix)</div><div class="ttdoc">add postfix to current Word. Will change metadata accordingly</div><div class="ttdef"><b>Definition</b> colourprint.cpp:5</div></div>
